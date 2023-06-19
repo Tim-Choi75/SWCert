@@ -1,7 +1,7 @@
 /* CodeUp 4421
 https://codeup.kr/problem.php?id=4421
 Algo: DFS
-
+Solve: https://scarlettb.tistory.com/81
 */
 
 #include <iostream>
@@ -11,6 +11,8 @@ int data[25][25];
 int check[25][25]={0};
 int dx[4]={0,0,-1,1};
 int dy[4]={-1,1,0,0};
+vector<int> v;	//solve
+int house = 1;	//solve
 
 int input() {
 
@@ -37,9 +39,8 @@ int dfs(int nowx, int nowy) {
 		ny=nowy+dy[i];
 		
 		if(nx<=N && nx>=1 && ny<=N && ny>=1) {
-			if(check[nx][ny]==0 && check[nowx][nowy]==0 check[nx][ny]) {
-				
-			}
+			if(check[nx][ny]==0 && data[nowx][nowy]==0 check[nx][ny]) {
+				dfs(nx, ny);
 		}
 		
 		
