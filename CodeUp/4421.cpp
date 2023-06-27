@@ -5,6 +5,9 @@ Solve: https://scarlettb.tistory.com/81
 */
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 int N;
 int data[25][25];
