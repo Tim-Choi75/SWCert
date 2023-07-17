@@ -1,6 +1,6 @@
 //https://codeup.kr/problem.php?id=1512
 //https://banguli.tistory.com/411
-//Result: Fail
+//Result: Understand Fail
 
 #include <stdio.h>
 
