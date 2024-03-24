@@ -1,3 +1,3 @@
-﻿  SelectionSort.c
-d:\git\swcert\vsexpress\vsexpress\selectionsort.c(7): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
+﻿  DebugTestMS.cpp
+d:\git\swcert\vsexpress\vsexpress\debugtestms.cpp(20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   VSExpress.vcxproj -> D:\Git\SWCert\VSExpress\Debug\VSExpress.exe
