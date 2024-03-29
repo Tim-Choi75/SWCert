@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Day6_Churros.cpp">
+    <ClCompile Include="CodeUp_2062.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
