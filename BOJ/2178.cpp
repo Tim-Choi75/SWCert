@@ -2,6 +2,8 @@
 #define MAX 101
 #define endl "\n"
 using namespace std;
+//https://www.acmicpc.net/problem/2178
+
 
 int N, M, cnt, answer=10001;
 int arr[MAX][MAX], visit[MAX][MAX];
