@@ -31,12 +31,13 @@ int main() {
 	
 	for(int i=0; i<n; i++) {
 		for(int j=0; j<m; j++) {
-			visit[i][j]=1;
+			visit[i][j]=-1;
 		}
 	}
 	
 	visit[0][0]=0;
-	Q.push({0,0});
+	//Q.push({0,0});
+	Q.push(make_pair(0, 0));
 	
 	while(!Q.empty()) {
 		pair<int, int> cur=Q.front();
@@ -50,11 +51,12 @@ int main() {
 			if(nx<0 || nx>=n || ny<0 || ny>=m)
 				continue;
 				
-			if(visit[nx][ny]==1 || arr[nx][ny]!='1')
+			if(visit[nx][ny]>=0 || arr[nx][ny]!='1')
 				continue;
 			
 			visit[nx][ny]=visit[cur.X][cur.Y]+1;
-			Q.push({nx, ny});
+			//Q.push({nx,ny});
+			Q.push(make_pair(nx, ny));
 		}//for dir
 
 	}//while
