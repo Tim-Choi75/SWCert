@@ -26,7 +26,6 @@ void DFS(int x, int y) {
 			continue;
 	
 		if(arr[nx][ny]!=0 && visit[nx][ny]!=1) {
-			visit[nx][ny]=1;
 			cnt++;
 			DFS(nx, ny, cnt+1);
 		}
