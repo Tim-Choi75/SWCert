@@ -17,7 +17,8 @@ int dx[4]={0, 0, -1, 1};
 int dy[4]={-1, 1, 0, 0};
 
 void DFS(int x, int y) {
-	
+	visit[x][y]=1;
+					
 	for(int i=0; i<4; i++) {
 		int nx=x+dx[i];
 		int ny=y+dy[i];
@@ -25,7 +26,7 @@ void DFS(int x, int y) {
 		if(nx<0 || nx>=N || ny<0 || ny>=N)
 			continue;
 	
-		if(arr[nx][ny]!=0 && visit[nx][ny]!=1) {
+		if(arr[nx][ny]==1 && visit[nx][ny]==0) {
 			visit[nx][ny]=1;
 			cnt++;
 			DFS(nx, ny);
@@ -46,11 +47,10 @@ int main() {
 	for(int i=0; i<N; i++) {
 		for(int j=0; j<N; j++) {
 			if(arr[i][j]==1 && visit[i][j]==0) {
-				visit[i][j]=1;
-				cnt++;
+
+				cnt=1;
 				DFS(i, j);
 				v.push_back(cnt);
-				cnt;
 			}
 				
 		}
