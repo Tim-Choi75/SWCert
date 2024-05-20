@@ -3,10 +3,11 @@
 //Algo: BFS
 //https://velog.io/@yoohoo030/%EB%B0%B1%EC%A4%802667-%EB%8B%A8%EC%A7%80%EB%B2%88%ED%98%B8%EB%B6%99%EC%9D%B4%EA%B8%B0-C
 
-#include <iostream>
+
 #include <queue>
 #include <vector>
 #include <algorithm>	//sort
+#include <iostream>
 using namespace std;
 
 #define MAX_N 26
