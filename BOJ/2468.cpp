@@ -11,10 +11,10 @@ using namespace std;
 #define MAX_N 101
 #define endl "\n" 
 
-int N, cnt, maxN=1; 
+int N, cnt, maxN=1, maxAreaCount=1; 
 int arr[MAX_N][MAX_N], visit[MAX_N][MAX_N];
 int dx[4]={0, 0, -1, 1};
-int dy[4]={0, 0, -1, 1};
+int dy[4]={-1, 1, 0, 0};
 vector<int> v;
 
 void DFS(int x, int y, int h) {
@@ -29,9 +29,10 @@ void DFS(int x, int y, int h) {
 			continue;
 		
 		if(arr[nx][ny]>h && visit[nx][ny]==0) {
+			cout << "->BFS h: "<< h <<"->[" << nx << "]" << "[" << ny << "]: "<< arr[nx][ny];
 			visit[nx][ny]=1;
-			cnt++;
-			DFS(nx,ny,h);
+			//cnt++;
+			DFS(nx, ny, h);
 		}
 	}
 
@@ -55,22 +56,24 @@ int main() {
 		for(int i=0; i<N; i++) {
 			for(int j=0; j<N; j++) {
 				if(arr[i][j]>h && visit[i][j]==0) {
-					cnt=1;
-					DFS(i,j,h);		
-					v.push_back(cnt);
+					cout << "start h: "<< h << "[" << i << "]" << "[" << j << "]: "<< arr[i][j];
+					visit[i][j]=1;
+					DFS(i, j, h);					
+					cnt++;
 				}
 			}
 		}		
 	}
 	
-	cout << "vector size: "<< v.size() << endl;
-		
+	//cout << "vector size: "<< v.size() << endl;
+	
+	/*	
 	for(int i=0; i<v.size(); i++)
 		cout << v[i] <<" ";
-	
-	cout << endl;	
-	int max=*max_element(v.begin(), v.end());
-	cout << max;
-	
+	*/
+	if(cnt > maxAreaCount)
+		maxAreaCount = cnt;
+		
+	cout << maxAreaCount;
 	return 0;
 } 
