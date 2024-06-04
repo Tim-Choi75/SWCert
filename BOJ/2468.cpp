@@ -1,5 +1,5 @@
-//백준 2468 - 안전 영역 
-//https://www.acmicpc.net/problem/2468
+//백준 10971 - 외판원 순회2 
+//https://www.acmicpc.net/problem/10971
 //Algo: 
 //2667과 비슷 
 
