@@ -22,7 +22,17 @@ void dijkstra(int src) {
 	
 	while(!pq.empty()) {
 		int u = pq.top(). second;
-		pq.pop
+		pq.pop();
+		if(visited[u])
+			continue;
+		
+		visited[u]=true;
+		for(int v=0; v<N; v++) {
+			if(Dist[v] > Dist[u]+Graph[u][v]) {
+				Dist[v] > Dist[u]+Graph[u][v]
+				pq.push(make_pair(Dist[v], v));
+			}
+		}
 	}
 		
 		
