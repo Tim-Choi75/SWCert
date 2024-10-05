@@ -21,13 +21,13 @@ int dx[4] = { 0,0,1,-1 };
 int dy[4] = { -1,1,0,0 };
 int arr[MAX_N+1][MAX_N+1] = { 0 };
 int visited[MAX_N+1][MAX_N+1] = { 0 };
+int flr[9];
 
 int dfs(int num) {
 
 	memset(visited, 0, sizeof(visited));
 
-	int currCnt=0, maxCnt = 0;
-	maxCnt = currCnt;
+	int currCnt=0;
 	for (int x= 0; x< m; x++) {
 		for (int y = 0; y < n; y++) {
 			//cout << "num: " << num << " x: " << x << " y: " << y << endl;
@@ -58,11 +58,7 @@ int dfs(int num) {
 			
 		}//for y
 	}//for x
-
-	if(maxCnt > currCnt) 
-		return maxCnt;
-	else
-		return currCnt;
+	return currCnt;
 }
 
 
@@ -77,9 +73,15 @@ int main() {
 		}
 	}
 
+	int maxCnt = 0;
 	for (int i = 1; i <= 9; i++) {
-		if(dfs(i) > 0)
-			cout << i << " " << dfs(i) << endl;
+		flr[i] = dfs(i);
+		if(maxCnt <= flr[i])
+			maxCnt = flr[i];
+
+		if(flr[i] != 0)
+			cout << i << " # " << maxCnt << endl;
+			
 	}
 	
 
