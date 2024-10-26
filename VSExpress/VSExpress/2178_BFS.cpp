@@ -1,3 +1,11 @@
+//https://www.acmicpc.net/problem/2178
+//https://wooono.tistory.com/410
+
+
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <iostream>
 #include <queue>
 
@@ -5,10 +13,8 @@
 #define Y second
 #define MAX 101
 #define endl "\n"
-using namespace std;
 
-//https://www.acmicpc.net/problem/2178
-//https://luv-n-interest.tistory.com/875
+using namespace std;
 
 int n, m, answer = 10001;
 string arr[MAX];
@@ -21,10 +27,15 @@ int main() {
 
 	ios::sync_with_stdio(0);
 	cin.tie(0);
+	cout.tie(0);
 
 	queue<pair<int, int> > Q;
 
+	freopen("D:/Git/SWCert/input/BOJ_2178-sample1.txt", "r", stdin);
+
 	cin >> n >> m;
+
+	cout << "n: " << n << "m: " << m;
 
 	for (int i = 0; i < n; i++) {
 		cin >> arr[i];

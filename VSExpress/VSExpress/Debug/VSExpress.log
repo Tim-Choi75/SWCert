@@ -1,5 +1,5 @@
 ﻿  2178_BFS.cpp
-d:\git\swcert\vsexpress\vsexpress\2178_bfs.cpp(30): error C2679: 이항 '>>': 오른쪽 피연산자로 'std::string' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+d:\git\swcert\vsexpress\vsexpress\2178_bfs.cpp(44): error C2679: 이항 '>>': 오른쪽 피연산자로 'std::string' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
   c:\program files (x86)\microsoft visual studio\2017\wdexpress\vc\tools\msvc\14.16.27023\include\istream(333): note: 'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(std::basic_streambuf<char,std::char_traits<char>> *)'일 수 있습니다.
   c:\program files (x86)\microsoft visual studio\2017\wdexpress\vc\tools\msvc\14.16.27023\include\istream(328): note: 또는       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(void *&)'
   c:\program files (x86)\microsoft visual studio\2017\wdexpress\vc\tools\msvc\14.16.27023\include\istream(323): note: 또는       'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::operator >>(long double &)'
@@ -21,4 +21,4 @@ d:\git\swcert\vsexpress\vsexpress\2178_bfs.cpp(30): error C2679: 이항 '>>': �
   c:\program files (x86)\microsoft visual studio\2017\wdexpress\vc\tools\msvc\14.16.27023\include\istream(933): note: 또는       'std::basic_istream<char,std::char_traits<char>> &std::operator >><std::char_traits<char>>(std::basic_istream<char,std::char_traits<char>> &,unsigned char *)'
   c:\program files (x86)\microsoft visual studio\2017\wdexpress\vc\tools\msvc\14.16.27023\include\istream(926): note: 또는       'std::basic_istream<char,std::char_traits<char>> &std::operator >><std::char_traits<char>>(std::basic_istream<char,std::char_traits<char>> &,signed char &)'
   c:\program files (x86)\microsoft visual studio\2017\wdexpress\vc\tools\msvc\14.16.27023\include\istream(919): note: 또는       'std::basic_istream<char,std::char_traits<char>> &std::operator >><std::char_traits<char>>(std::basic_istream<char,std::char_traits<char>> &,signed char *)'
-  d:\git\swcert\vsexpress\vsexpress\2178_bfs.cpp(30): note: 인수 목록 '(std::istream, std::string)'을(를) 일치시키는 동안
+  d:\git\swcert\vsexpress\vsexpress\2178_bfs.cpp(44): note: 인수 목록 '(std::istream, std::string)'을(를) 일치시키는 동안
