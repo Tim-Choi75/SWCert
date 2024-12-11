@@ -11,7 +11,7 @@
 
 using namespace std;
 
-vector<pair<int, int>> node[20005];
+vector<pair<int,int> > node[20005];
 priority_queue<pair<int, int>, vector<pair<int, int>> , greater<pair<int, int>> > pq;
 int value[20005];
 
