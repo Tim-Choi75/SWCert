@@ -21,16 +21,19 @@ int main() {
 	freopen("D:/Git/SWCert/input/AlgoSolve_Inflearn-17.txt", "r", stdin);
 	scanf("%d", &N);
 
-	printf("N: %d\n", N);
+	//printf("N: %d\n", N);
 	for (i = 1; i <= N; i++) {
-		scanf("%d", &num[i]);
+		
+		scanf("%d %d", &num[i], &sum[i]);
 
-		printf("i: %d, \n", N);
-		for (j = 1; j < num[i]; j++) {
-			sum[j] = sum[j] + j;
+		//printf("num[i]: %d, sum[i]: %d\n", num[i], sum[i]);
+		int total = 0;
+		for (j = 1; j <=num[i]; j++) {						
+			total = total + j;
+			//printf("i: %d, j: %d, total: %d, \n", i, j, total);
 		}
 
-		if (num[i] == num[j])
+		if (sum[i] == total)
 			printf("YES\n");
 		else
 			printf("NO\n");
