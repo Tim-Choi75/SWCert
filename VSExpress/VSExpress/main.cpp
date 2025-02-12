@@ -12,7 +12,7 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int N, M, time, cnt;
+	int N, M, time, cnt=0;
 	freopen("D:/Git/SWCert/input/AlgoSolve_Inflearn-18.txt", "r", stdin);
 	scanf("%d %d", &N, &M);
 
@@ -26,7 +26,7 @@ int main() {
 		}
 	}
 
-	printf("%d\n", cnt);
+	printf("cnt: %d\n", cnt);
 
 	return 0;
 }
