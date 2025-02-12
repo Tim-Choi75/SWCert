@@ -6,7 +6,7 @@
 #define MAX 300001
 using namespace std;
 
-
+#define CRT_SECURE_NO_WARINGS
 
 int main() {
 
