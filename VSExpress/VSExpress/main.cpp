@@ -39,7 +39,24 @@ void dijkstra(int src) {
 
 	pq.push(make_pair(0, src));
 	while (!pq.empty()) {
-		int
+		int cost = pq.top().first;
+		int here = pq.top().second;
+		//printf("cost: %d, here: %d\n", cost, here);
+
+		pq.pop();
+
+		if (visit[here] == 1)
+			continue;
+
+		visit[here] = 1;
+		
+		for (i = 1; i <= n; i++) {
+			if (dist[i] > dist[here] + map[here][i]) {
+				printf("dist[%d]: %d, here: %d, dist[here]: %d, map[here][i]: %d\n", i, dist[i], here, dist[here], map[here][i]);
+				dist[i] = dist[here] + map[here][i];
+				pq.push(make_pair(dist[i], i));
+			}
+		}
 
 	}
 
@@ -50,7 +67,7 @@ int main() {
 	int a, b, c;
 
 	scanf("%d %d", &n, &m);
-	printf("n: %d, m: %d", n, m);
+	//printf("n: %d, m: %d\n", n, m);
 
 	init_array();
 	for (i = 1; i <= m; i++) {
@@ -61,6 +78,6 @@ int main() {
 	dijkstra(1);
 
 
-
+	printf("answer %d", dist[n]);
 	return 0;
 }
