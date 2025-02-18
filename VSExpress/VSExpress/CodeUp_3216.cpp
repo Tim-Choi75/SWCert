@@ -1,7 +1,7 @@
-//CodeUp 3216 - ÃÖ´Ü °æ·Î Ãâ·Â
+//CodeUp 3216 - ìµœë‹¨ ê²½ë¡œ ì¶œë ¥
 //https://codeup.kr/problem.php?id=3216
-//Algo: ´ÙÀÍ½ºÆ®¶ó(dijkstra)
-//Ç®ÀÌ:
+//Algo: ë‹¤ìµìŠ¤íŠ¸ë¼(dijkstra)
+//Solve:
 
 int N, M, i, j;
 
