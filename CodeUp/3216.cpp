@@ -30,7 +30,7 @@ void init_array() {
 			if (i != j)
 				map[i][j] = INF;
 		}
-	}
+	}about:blank#blocked
 
 	for (i = 1; i <= N; i++)
 		dist[i] = INF;
@@ -56,8 +56,8 @@ void dijkstra(int src) {
 			continue;
 
 		visit[here] = 1;
-		index++;
-		route[index] = here;
+		//index++;
+		//route[index] = here;
 
 		for (i = 1; i <= N; i++) {
 			if (dist[i] > dist[here] + map[here][i]) {

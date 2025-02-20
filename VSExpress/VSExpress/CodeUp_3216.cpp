@@ -56,8 +56,8 @@ void dijkstra(int src) {
 			continue;
 
 		visit[here] = 1;
-		index++;
-		route[index] = here;
+		//index++;
+		//route[index] = here;
 
 		for (i = 1; i <= N; i++) {
 			if (dist[i] > dist[here] + map[here][i]) {
@@ -103,13 +103,13 @@ int main() {
 
 	printf("st_nodec: %c, fn_nodec: %c\n", st_nodec, fn_nodec);
 	printf("st_node: %d, fn_node: %d\n", st_node, fn_node);
-	
+
 	dijkstra(st_node);
 	printf("%d\n", dist[fn_node]);
 
 	for (i = 1; i <= index; i++)
 		printf("%d\n", route[i]);
-		
+
 
 	return 0;
 }
