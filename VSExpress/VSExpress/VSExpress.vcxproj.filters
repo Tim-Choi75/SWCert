@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CodeUp_3216.cpp">
+    <ClCompile Include="BOJ_11779.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
