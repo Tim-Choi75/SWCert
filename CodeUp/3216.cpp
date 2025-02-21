@@ -30,7 +30,7 @@ void init_array() {
 			if (i != j)
 				map[i][j] = INF;
 		}
-	}about:blank#blocked
+	}
 
 	for (i = 1; i <= N; i++)
 		dist[i] = INF;
@@ -107,8 +107,9 @@ int main() {
 	dijkstra(st_node);
 	printf("%d\n", dist[fn_node]);
 
+	printf("index: %d\n", index);
 	for (i = 1; i <= index; i++)
-		printf("%d\n", route[i]);
+		printf("%c\n", route[i]);
 		
 
 	return 0;
