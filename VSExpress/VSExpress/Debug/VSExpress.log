@@ -1,4 +1,2 @@
 ﻿  BOJ_11779.cpp
-d:\git\swcert\vsexpress\vsexpress\boj_11779.cpp(86): warning C4700: 초기화되지 않은 'start' 지역 변수를 사용했습니다.
-d:\git\swcert\vsexpress\vsexpress\boj_11779.cpp(89): warning C4700: 초기화되지 않은 'end' 지역 변수를 사용했습니다.
   VSExpress.vcxproj -> D:\Git\SWCert\VSExpress\Debug\VSExpress.exe

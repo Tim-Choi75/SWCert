@@ -2,7 +2,7 @@
 //https://www.acmicpc.net/problem/11779
 //Algo: Dijkstra
 //DataStructure: Priority Queue
-//Solu: 
+//Solu: https://www.youtube.com/watch?v=w2hQaGzWYc8&t=1125s
 //Result:
 
 #define  _CRT_SECURE_NO_WARNINGS
@@ -19,6 +19,7 @@ int n, m, i, j;
 int map[MAX_N][MAX_N];
 int dist[MAX_N];
 int visit[MAX_N];
+int prev[MAX_N];
 typedef pair<int, int> pii;
 
 void init_array() {
@@ -30,8 +31,11 @@ void init_array() {
 		}
 	}
 
-	for (i = 1; i <= n; i++)
+	for (i = 1; i <= n; i++) {
 		dist[i] = INF;
+		prev[i] = INF;
+	}
+		
 }
 
 void dijkstra(int src) {
@@ -55,12 +59,12 @@ void dijkstra(int src) {
 			if (dist[i] > dist[here] + map[here][i]) {
 				dist[i] = dist[here] + map[here][i];
 				pq.push(make_pair(dist[i], i));
+				prev[i] = here;
 			}
 		}//for i
 
 	}//while
 
-chrome://vivaldi-webui/startpage?section=Speed-dials&background-color=#2e2f37
 }
 
 
@@ -83,13 +87,23 @@ int main() {
 		map[a][b] = c;
 	}
 	
+	scanf("%d %d", &start, &end);
+
 	dijkstra(start);
 
 	//최소 비용
 	printf("%d\n", dist[end]);
+	
 	//최소 비용  도시 수
-	printf("%d\n", dist[end]);
+	int curr = end;	
+	while (curr != -1) {		
+		curr = prev[curr];
+	}
+
+	printf("%d\n", prev.size());
+	
 	//도시  순서대로 출력
+	for(i=)
 
 
 
