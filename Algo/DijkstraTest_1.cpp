@@ -1,4 +1,5 @@
 /* https://www.youtube.com/watch?v=w2hQaGzWYc8 */
+#define _CRT_SECURE_NO_WARINGS
 
 #include <iostream>
 #include <queue>
@@ -11,7 +12,8 @@ using namespace std;
 typedef pair<int, int> pii;
 
 int N, E;
-int Graph[MAX_N][MAX_N], Dist[MAX_N];
+int map[MAX_N][MAX_N];
+int dist[MAX_N];
 
 void dijkstra(int src) {
 	priority_queue< pii, vector<pii>, greater<pii> > pq;
@@ -43,10 +45,10 @@ void dijkstra(int src) {
 
 int main() {
 	
-	freopen("./src/DijkstraTest_1.txt", "r", stdin);
-	cin >> N >> E;
-	cout << N << E << endl;
-	for(int i=0; i<N; i++) {
+	freopen("D:/Git/SWCert/input/DijkstraTest.txt", "r", stdin); 
+	scanf("%d %d", &N, &E);	//N:노드수, E:간선수
+	
+	for(int i=1; i<=N; i++) {
 		for(int j=0; j<N; j++) {
 			if(i==j)
 				Graph[i][j]=0;
@@ -55,16 +57,15 @@ int main() {
 		}
 	}
 	
-	for(int i=0; i<E; i++) {
-		int u, v, cost;
-		cin >> u >> v >> cost;		
-		Graph[u][v] = Graph[v][u] = cost;
+	for (i = 1; i <= E; i++) {
+		scanf("%d %d %d", &a, &b, &c);
+		map[a][b] = c;
 	}
 	
-	dijkstra(0);
+	dijkstra(1);
 	
-	for(int i=0; i<N; ++i)
-		cout << Dist[i] << ' ';
-		cout << endl;
-		return 0;
+	for(int i=1; i<=N; ++i)
+		printf("%d ", dist[i]);
+	
+	return 0;
 }

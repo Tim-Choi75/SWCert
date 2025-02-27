@@ -19,7 +19,7 @@ int n, m, i, j;
 int map[MAX_N][MAX_N];
 int dist[MAX_N];
 int visit[MAX_N];
-int prev[MAX_N];
+int prev_node[MAX_N];
 typedef pair<int, int> pii;
 
 void init_array() {
@@ -33,7 +33,7 @@ void init_array() {
 
 	for (i = 1; i <= n; i++) {
 		dist[i] = INF;
-		prev[i] = INF;
+		prev_node[i] = -1;
 	}
 		
 }
@@ -46,20 +46,21 @@ void dijkstra(int src) {
 
 	while (!pq.empty()) {
 		int cost = pq.top().first;
-		int here = pq.top().second;
+		int next = pq.top().second;
 
 		pq.pop();
 
-		if (visit[here] == 1)
+		if (visit[next] == 1)
 			continue;
 		
-		visit[here] = 1;
+		visit[next] = 1;
 
 		for (i = 1; i <= n; i++) {
-			if (dist[i] > dist[here] + map[here][i]) {
-				dist[i] = dist[here] + map[here][i];
+			if (dist[i] > dist[next] + map[next][i]) {
+				prev_node[i] = next;
+				dist[i] = dist[next] + map[next][i];
 				pq.push(make_pair(dist[i], i));
-				prev[i] = here;
+				
 			}
 		}//for i
 
@@ -93,19 +94,13 @@ int main() {
 
 	//최소 비용
 	printf("%d\n", dist[end]);
-	
-	//최소 비용  도시 수
-	int curr = end;	
-	while (curr != -1) {		
-		curr = prev[curr];
+
+	//경로 출력
+	int curr = end;
+	while (curr != -1) {
+		printf("%d <", curr);
+		curr = prev_node[curr];
 	}
-
-	printf("%d\n", prev.size());
 	
-	//도시  순서대로 출력
-	for(i=)
-
-
-
 	return 0;
 }
