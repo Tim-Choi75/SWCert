@@ -1,75 +1,76 @@
-//최단경로 
 //https://www.acmicpc.net/problem/1753
-//Algo: Dijkstra
-//Solu:https://yabmoons.tistory.com/376
-//Result:
 
-#include <iostream>
-#include <vector>
+#define  _CRT_SECURE_NO_WARNINGS
 
-#define endl "\n"
-#define MAX 20010
+#define MAX_N  20001
 #define INF 987654321
 
-int V, E, start;	//V:정점, E:간선 
-int MAP[MAX][MAX];
-int dist[MAX];
-bool Select[MAX];
+#include <iostream>
+#include <stdio.h>
+#include <queue>
+using namespace std; 
 
-using namespace std;
+int V, E, i, j;
+int map[MAX_N][MAX_N];
+int dist[MAX_N];
+int visit[MAX_N];
+typedef pair<int, int> pii;
 
-void input()
-{
-	cin >> V >> E >> start;
-	
-	for(int i=1; i<=V; i++) {
+void init_array() {
+		
+	for (i = 1; i <= V; i++) {
+		for (j = 1; j <= V; j++) {
+			if(i!=j)
+				map[i][j] = INF;
+		}	
+	}
+
+	for (i = 1; i <= V; i++)
 		dist[i] = INF;
-		for(int j=1; j<=V; i++) {
-            if (i == j) 
-				MAP[i][j] = 0;
-            else
-				MAP[i][j] = INF;			
-		}		
-	}
-	
-	for(int i=0; i<E; i++) {
-		int a, b, c; 
-		cin >> a >> b >> c;
-		MAP[a][b] = c;
-	}
-	
-	
 }
 
-void dijkstra() {
-	
-}
+void dijkstra(int src) {
+	priority_queue<pii, vector<pii>, greater<pii>> pq;
+	pq.push(make_pair(0, src));
 
-void solution() {
-	
-	dijkstra();
-	
-	for(int i=1; i<=V; i++) {
-		if(dist[i]==INF) 
-			cout<<"INF"<<endl;
-		else cout
-			cout<<dist[i]<<endl;		
+	dist[src] = 0;
+
+	while (!pq.empty()) {
+
+		int cost = pq.top().first;
+		int next = pq.top().second;
+
+		pq.pop();
+
+		for (i = 1; i <= V; i++) {
+
+
+		}
+
+
+
 	}
-}
-void solve() 
-{
-	input();
-	solution();
+
+
 }
 
-int main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cin.tie(NULL);
-    
-    //freopen("./BOJ_1753.txt", "r", stdin);
-	solve();
+int main() {
+
+	freopen("D:/Git/SWCert/input/BOJ_1753.txt", "r", stdin);
+
+	init_array();
+	int st_node, a, b, c;
+	scanf("%d %d", &V, &E);
+	scanf("%d", &st_node);
+
+	for (i = 1; i <= E; i++) {
+		scanf("%d %d %d", &a, &b, &c);
+		
+		map[a][b] = c;
+	}
 	
-    return 0;
+	dijkstra(st_node)
+	
+	for
+	return 0;
 }

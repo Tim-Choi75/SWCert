@@ -17,6 +17,8 @@ int value[20005];
 
 int main() {
 
+    freopen("D:/Git/SWCert/input/BOJ_1753.txt", "r", stdin);
+
     int V, E, K;
     int u, v, w, i, j;
 

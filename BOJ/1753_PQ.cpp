@@ -74,5 +74,6 @@ int main() {
     cin.tie(NULL);
     cout.tie(NULL);
 
+    freopen("D:/Git/SWCert/input/BOJ_1753.txt", "r", stdin);
     solve();
 }
