@@ -16,6 +16,23 @@ int dist[MAX_N];
 int visit[MAX_N];
 typedef pair<int, int> pii;
 
+void print_array() {
+	
+	for (i = 1; i <= V; i++) {
+		for (j = 1; j <= V; j++) {
+			printf("%d ", map[i][j]);
+		}
+		printf("\n");
+	}
+
+	printf("---------------------\n");
+	for (i = 1; i <= V; i++)
+		printf("%d ", dist[i]);
+
+	printf("\n---------------------\n");
+
+}
+
 void init_array() {
 		
 	for (i = 1; i <= V; i++) {
@@ -25,8 +42,11 @@ void init_array() {
 		}	
 	}
 
-	for (i = 1; i <= V; i++)
+	for (i = 1; i <= V; i++) {	
 		dist[i] = INF;
+	}
+		
+	
 }
 
 void dijkstra(int src) {
@@ -42,35 +62,47 @@ void dijkstra(int src) {
 
 		pq.pop();
 
+		if(visit[next] == 1)
+			continue;
+
+		visit[next] = 1;
+
 		for (i = 1; i <= V; i++) {
-
-
-		}
-
-
-
-	}
-
-
+			if (dist[i] > dist[next] + map[next][i]) {
+				dist[i] = dist[next] + map[next][i];
+				pq.push(make_pair(dist[i], i));
+			}//ifchrome://vivaldi-webui/startpage?section=Speed-dials&background-color=#2e2f37
+		}//for
+	}//while
 }
 
 int main() {
 
 	freopen("D:/Git/SWCert/input/BOJ_1753.txt", "r", stdin);
 
-	init_array();
+	
 	int st_node, a, b, c;
 	scanf("%d %d", &V, &E);
 	scanf("%d", &st_node);
+	//printf("V: %d, E: %d, st_node: %d\n", V, E, st_node);
+	init_array();
 
 	for (i = 1; i <= E; i++) {
-		scanf("%d %d %d", &a, &b, &c);
-		
+		scanf("%d %d %d", &a, &b, &c);		
+		//printf("a: %d, b: %d, c: %d\n", a, b, c);
 		map[a][b] = c;
 	}
 	
-	dijkstra(st_node)
+	//print_array();
+
+	dijkstra(st_node);
 	
-	for
+	for (i = 1; i <= V; i++) {
+		if (dist[i] == INF)
+			printf("INF\n");
+		else
+			printf("%d\n", dist[i]);
+	}
+
 	return 0;
 }
