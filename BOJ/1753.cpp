@@ -3,7 +3,7 @@
 #define  _CRT_SECURE_NO_WARNINGS
 
 #define MAX_N  20001
-#define INF 987654321
+#define INF 999
 
 #include <iostream>
 #include <stdio.h>
@@ -71,7 +71,7 @@ void dijkstra(int src) {
 			if (dist[i] > dist[next] + map[next][i]) {
 				dist[i] = dist[next] + map[next][i];
 				pq.push(make_pair(dist[i], i));
-			}//ifchrome://vivaldi-webui/startpage?section=Speed-dials&background-color=#2e2f37
+			}//if
 		}//for
 	}//while
 }
