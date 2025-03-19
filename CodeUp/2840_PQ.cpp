@@ -32,11 +32,16 @@ void dijkstra(int st) {
 
 		pq.pop();
 
+		printf("v[curr].size(): %d\n", v[curr].size());
 		for (i = 1; i < v[curr].size(); i++) {
-			int ncost = cost + v[curr][i].first;	//다음 정점
-			int next = v[curr][i].second;			//다음 비용
+			
+			int next = v[curr][i].first;			//다음 정점
+			int ncost = cost + v[curr][i].second;	//다음 비용
+
+			printf("i:%d ncost: %d, next: %d\n", i, ncost, next);
 
 			if (dist[next] > ncost) {
+				printf("inside ncost: %d, next: %d\n", i, ncost, next);
 				dist[next] = ncost;
 				pq.push(make_pair(ncost, next));
 			}
