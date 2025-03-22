@@ -52,7 +52,7 @@ void dijkstra(int st) {
 
 int main() {
 
-	freopen("/Users/timchoi/Git/SWCert/CodeUp_2840.txt", "r", stdin);
+	freopen("/Users/timchoi/Git/SWCert/input/CodeUp_2840.txt", "r", stdin);
 	//freopen("D:/Git/SWCert/input/CodeUp_2840.txt", "r", stdin);
 
 	scanf("%d %d", &n, &m);
