@@ -75,8 +75,8 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	freopen("/Users/timchoi/Git/SWCert/input/BOJ_11779.txt", "r", stdin);
-	//freopen("D:/Git/SWCert/input/BOJ_11779.txt", "r", stdin);
+	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_11779.txt", "r", stdin);
+	freopen("D:/Git/SWCert/input/BOJ_11779.txt", "r", stdin);
 
 	scanf("%d %d", &n, &m);
 	
