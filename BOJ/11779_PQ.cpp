@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <queue>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -22,7 +23,8 @@ typedef pair<int, int> pii;
 int map[MAX_N][MAX_N];
 //vector <pii> v[MAX_N];
 int dist[MAX_N];
-int prev[MAX_N];	//경로 지정
+int route[MAX_N];	//경로 지정
+stack<int> st;
 
 void dijkstra(int st) {
 
@@ -40,9 +42,9 @@ void dijkstra(int st) {
 		for (i = 1; i < n; i++) {
 
 			if (dist[i] > dist[curr] + map[curr][i]) {
-				dist[i] = dist[curr] + map[curr][i]
+				dist[i] = dist[curr] + map[curr][i];
 				pq.push(make_pair(dist[i], i));
-				prev[i] = curr;
+				route[i] = curr;
 			}//if
 
 		}//for
@@ -77,15 +79,27 @@ int main() {
 
 	for (int i = 1; i <= n; i++) {
 		dist[i] = INF;
-		prev[i] = INF;
+		route[i] = INF;
 	}
 
 	int st_node, end_node;
 	scanf("%d %d", &st_node, &end_node);
 
 	dijkstra(st_node);
+	route[st_node] = 0;
 
-	printf("%d\n", dist[end_node]);	//도착도시 최소비용
+	for (i = end_node; i != st_node; i = route[i])
+		st.push(i);
+	st.push(st_node);
+
+
+	printf("%d\n", dist[end_node]);	//최소비용
+	printf("%d\n", st.size());		//방문도시수
+
+	while (!st.empty()) {
+		printf("%d\n", st.top());
+		st.pop();
+	}
 
 	return 0;
 }
