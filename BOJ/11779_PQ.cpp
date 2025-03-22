@@ -3,7 +3,7 @@
 //Algo: Dijkstra
 //DataStructure: Priority Queue
 //Solu: https://www.youtube.com/watch?v=w2hQaGzWYc8&t=1125s
-//Result:
+//Result:https://bbeomgeun.tistory.com/112
 
 #define  _CRT_SECURE_NO_WARNINGS
 
@@ -57,7 +57,7 @@ void dijkstra(int st) {
 
 int main() {
 
-
+	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_11779.txt", "r", stdin);
 	freopen("D:/Git/SWCert/input/BOJ_11779.txt", "r", stdin);
 
 	scanf("%d %d", &n, &m);
@@ -86,18 +86,18 @@ int main() {
 	scanf("%d %d", &st_node, &end_node);
 
 	dijkstra(st_node);
-	route[st_node] = 0;
+	printf("a: %d\n", dist[end_node]);	//최소비용
 
-	for (i = end_node; i != st_node; i = route[i])
+	for (i = end_node; i != st_node; i--)
 		st.push(i);
 	st.push(st_node);
 
 
-	printf("%d\n", dist[end_node]);	//최소비용
-	printf("%d\n", st.size());		//방문도시수
+
+	printf("b: %d\n", st.size());		//방문도시수
 
 	while (!st.empty()) {
-		printf("%d\n", st.top());
+		printf("c: %d\n", st.top());	//경로 출력
 		st.pop();
 	}
 
