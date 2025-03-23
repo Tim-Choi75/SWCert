@@ -92,15 +92,16 @@ int main() {
 	int temp = 0;
 	st.push_back(end_node);
 
-	while(temp!=0) {
+	while(temp!=st_node) {
 		temp = route[temp];
 		st.push_back(temp);
 	}
 		
 	printf("a: %d\n", dist[end_node]);	//최소비용
-	printf("b: %d\n", st.size());		//방문도시수
+	printf("b: %lu\n", st.size());		//방문도시수, Mac
+	//printf("b: %d\n", st.size());		//방문도시수, Windows
 
-	for ( i = st.size()-1; i >= 0; i--) {
+	for ( i = st.size()-1; i >= 1; i--) {
 		printf("%d ", st[i]);
 	}
 
