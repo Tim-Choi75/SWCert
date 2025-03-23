@@ -24,9 +24,7 @@ int i, j, k;
 typedef pair<int, int> pii;
 int map[MAX_N][MAX_N];
 //vector <pii> v[MAX_N];
-int dist[MAX_N];
-int route[MAX_N];	//경로 지정
-vector <int> st;
+int times[MAX_N];
 
 void dijkstra(int st) {
 
@@ -41,13 +39,13 @@ int main() {
 	freopen("/Users/timchoi/Git/SWCert/input/BOJ_10282.txt", "r", stdin);
 	//freopen("D:/Git/SWCert/input/BOJ_11779.txt", "r", stdin);
    
-    scanf("%d", &t);
+    scanf("%d", &tc);
 
     for(i=1; i<tc; i++) {
         scanf("%d %d %d", &n, &d, &c);
 
         for(j=1; j<=n; j++) {
-            time[j]= INF;
+            times[j]= INF;
         }
         
         for(j=1; j<=n; j++) {
