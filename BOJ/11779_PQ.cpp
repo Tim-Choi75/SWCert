@@ -3,7 +3,7 @@
 //Algo: Dijkstra
 //DataStructure: Priority Queue
 //Solu: https://www.youtube.com/watch?v=w2hQaGzWYc8&t=1125s
-//Result:
+//Result: https://tinyurl.com/27ow7e26
 
 #define  _CRT_SECURE_NO_WARNINGS
 
@@ -24,7 +24,7 @@ int map[MAX_N][MAX_N];
 //vector <pii> v[MAX_N];
 int dist[MAX_N];
 int route[MAX_N];	//경로 지정
-stack<int> st;
+vector <int> st;
 
 void dijkstra(int st) {
 
@@ -57,8 +57,8 @@ void dijkstra(int st) {
 
 int main() {
 
-
-	freopen("D:/Git/SWCert/input/BOJ_11779.txt", "r", stdin);
+	freopen("/Users/timchoi/Git/SWCert/input/BOJ_11779.txt", "r", stdin);
+	//freopen("D:/Git/SWCert/input/BOJ_11779.txt", "r", stdin);
 
 	scanf("%d %d", &n, &m);
 
@@ -85,20 +85,23 @@ int main() {
 	int st_node, end_node;
 	scanf("%d %d", &st_node, &end_node);
 
+	//printf("st_node:%d, end_node: %d\n", st_node, end_node);
+
 	dijkstra(st_node);
-	route[st_node] = 0;
 
-	for (i = end_node; i != st_node; i = route[i])
-		st.push(i);
-	st.push(st_node);
+	int temp = 0;
+	st.push_back(end_node);
 
+	while(temp!=0) {
+		temp = route[temp];
+		st.push_back(temp);
+	}
+		
+	printf("a: %d\n", dist[end_node]);	//최소비용
+	printf("b: %d\n", st.size());		//방문도시수
 
-	printf("%d\n", dist[end_node]);	//최소비용
-	printf("%d\n", st.size());		//방문도시수
-
-	while (!st.empty()) {
-		printf("%d\n", st.top());
-		st.pop();
+	for ( i = st.size()-1; i >= 0; i--) {
+		printf("%d ", st[i]);
 	}
 
 	return 0;
