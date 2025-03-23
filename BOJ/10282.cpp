@@ -28,7 +28,7 @@ int times[MAX_N];
 
 void dijkstra(int st) {
 
-	
+
 }
 
 
@@ -38,28 +38,28 @@ int main() {
 
 	freopen("/Users/timchoi/Git/SWCert/input/BOJ_10282.txt", "r", stdin);
 	//freopen("D:/Git/SWCert/input/BOJ_11779.txt", "r", stdin);
-   
-    scanf("%d", &tc);
 
-    for(i=1; i<tc; i++) {
-        scanf("%d %d %d", &n, &d, &c);
+	scanf("%d", &tc);
 
-        for(j=1; j<=n; j++) {
-            times[j]= INF;
-        }
-        
-        for(j=1; j<=n; j++) {
-            for(k=1; k<=n; k++) {
-                if(j!=k)
-                    map[j][k]=INF;
-            }
-        }        
+	for (i = 1; i < tc; i++) {
+		scanf("%d %d %d", &n, &d, &c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
 
-        for(j=1; j<=d; j++) {
-            scanf("%d %d %d", &a, &b, &s);
-            map[a][b]=s;
-        }
-    }
+		for (j = 1; j <= n; j++) {
+			times[j] = INF;
+		}
+
+		for (j = 1; j <= n; j++) {
+			for (k = 1; k <= n; k++) {
+				if (j != k)
+					map[j][k] = INF;
+			}
+		}
+
+		for (j = 1; j <= d; j++) {
+			scanf("%d %d %d", &a, &b, &s);
+			map[a][b] = s;
+		}
+	}
 
 	return 0;
 }
