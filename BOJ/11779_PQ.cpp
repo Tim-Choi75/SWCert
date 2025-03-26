@@ -26,8 +26,9 @@ int dist[MAX_N];
 int route[MAX_N];	//경로 지정
 stack<int> st;
 
-void dijkstra(int st) {
+int dijkstra(int st, int ed) {
 
+	dist[st] = 0;
 	priority_queue <pii, vector <pii>, greater <pii>> pq;
 
 	pq.push(make_pair(0, st));
@@ -38,6 +39,9 @@ void dijkstra(int st) {
 		int curr = pq.top().second;	//현재 위치
 
 		pq.pop();
+
+		if (curr == ed)
+			return dist[ed];
 
 		for (i = 1; i < n; i++) {
 
@@ -85,11 +89,12 @@ int main() {
 	int st_node, end_node;
 	scanf("%d %d", &st_node, &end_node);
 
-	dijkstra(st_node);
+	dijkstra(st_node, end_node);
 	printf("a: %d\n", dist[end_node]);	//최소비용
 
 	for (i = end_node; i != st_node; i--)
 		st.push(i);
+	
 	st.push(st_node);
 
 
