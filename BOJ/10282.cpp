@@ -26,10 +26,13 @@ vector <pii> v[MAX_N];
 int times[MAX_N];
 
 
-void dijkstra(int x) {
+void dijkstra(int x, int tc) {
+
+	printf("dijkstra tc: %d\n", tc);
 
 	priority_queue <pii, vector<pii>, greater<pii>> pq;
 	times[x] = 0;	//자기자신을 0으로 설정
+
 
 	pq.push(make_pair(0, x));
 
@@ -46,7 +49,7 @@ void dijkstra(int x) {
 
 			if (times[next] > nextTime)
 				times[next] = nextTime;
-				pq.push(make_pair(nextTime, next));	//큐에 담음
+			pq.push(make_pair(nextTime, next));	//큐에 담음
 		}
 
 	}//while
@@ -76,7 +79,7 @@ int main() {
 
 	for (i = 1; i <= tc; i++) {
 		scanf("%d %d %d", &n, &d, &c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
-		printf("n: %d, d: %d, c: %d\n", n, d, c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
+		printf("i:%dth, n: %d, d: %d, c: %d\n", i, n, d, c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
 
 		for (j = 1; j <= n; j++) {
 			times[j] = INF;
@@ -87,8 +90,8 @@ int main() {
 			v[start].push_back(make_pair(cost, target));
 		}
 
-		dijkstra(c);
-	}
+		dijkstra(c, i);
+	}//for
 
 	return 0;
 }
