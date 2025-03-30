@@ -54,6 +54,8 @@ void dijkstra(int x, int tc) {
 
 	}//while
 
+	//INF가 아닌 수 중에서 가장 큰 값이 모든 PC 감염 시간
+	//INF가 아닌 수들의 개수가 감염된 컴퓨터의 수
 	int com = 0, t = 0;
 	for (i = 1; i <= n; i++) {
 		if (times[i] == INF)
