@@ -28,7 +28,7 @@ int times[MAX_N];
 
 void dijkstra(int x, int tc) {
 
-	printf("dijkstra tc: %d\n", tc);
+	//printf("dijkstra tc: %d\n", tc);
 
 	priority_queue <pii, vector<pii>, greater<pii>> pq;
 	times[x] = 0;	//자기자신을 0으로 설정
@@ -77,11 +77,12 @@ int main() {
 	freopen("D:/Git/SWCert/input/BOJ_10282.txt", "r", stdin);
 
 	scanf("%d", &tc);
-	printf("tc: %d\n", tc);
+	//printf("tc: %d\n", tc);
 
-	for (i = 1; i <= tc; i++) {
+	while(tc--) {
+	//for (i = 1; i <= tc; i++) {
 		scanf("%d %d %d", &n, &d, &c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
-		printf("i:%dth, n: %d, d: %d, c: %d\n", i, n, d, c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
+		//printf("i:%dth, n: %d, d: %d, c: %d\n", i, n, d, c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
 
 		for (j = 1; j <= n; j++) {
 			times[j] = INF;
