@@ -17,7 +17,7 @@ using namespace std;
 
 typedef pair<int, int> pii;
 vector <pii> v[MAX_N];
-int dist[MAX_N], visit[MAX_N];
+int dist[MAX_N];
 
 
 int main() {
@@ -29,47 +29,45 @@ int main() {
 
 	int a, b, c;
 
-	for (i = 1; i <= m: i++) {
+	for (i = 0; i < m; i++) {
 		scanf("%d %d %d", &a, &b, &c);
 		v[a].push_back({ b, c });	
 	}
 
-	for (i = 1; i <= n; i++) {
-		dist[i] = INF;
-		visit[i] = 0;
+	for (i = 0; i < n; i++) {
+		dist[i] = INF;		
 	}
 
 	
-	pq.push(({ 0, 1 });
 	dist[1] = 0;
 	priority_queue <pii, vector<pii>, greater<pii>> pq;
+	pq.push({ 1, 0 });	//start, 0
 
 	while (!pq.empty()) {
 		
-		int cost = pq.top().first;	//현재 시간
-		int curr = pq.top().second;	//현재 정점
+		int curr = pq.top().first;	//현재 정점
+		int cost = pq.top().second;	//현재 시간
 
+		printf("curr: %d, cost: %d\n", curr, cost);
 		pq.pop();
 
 		//최단 거리가 아닌 경우는 skip		
 		if (dist[curr] < cost)
 			continue;
 
-		for (i = 1; i < v[curr].size(); i++) {
+		for (i = 0; i < v[curr].size(); i++) {
 			//선택된 노드의 인접 노드
 			int next = v[curr][i].first;
 			//선택된 노드 거쳐서 인접노트고 가는 비용
 			int nextCost = cost + v[curr][i].second;
-			if(nextCost)
-		}
+			if (nextCost < dist[next]) {
+				dist[next] = nextCost;
+				pq.push({ next, nextCost });
+			}
+		}//for
 
+	}//while
 
-	
-	
-	
-	}
-
-
-
+	printf("dist: %d\n", dist[n-1]);
 	return 0;
 }
