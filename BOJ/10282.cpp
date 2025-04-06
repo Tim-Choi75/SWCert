@@ -15,59 +15,27 @@
 
 using namespace std;
 
-#define MAX_N 10001
-#define INF 999
+#define MAX_N	100001
+#define INF		1e9
 
-int tc, n, d, c, target, start, cost;
+int tc, n, d, c, a, b, s;
 int i, j, k;
 
-typedef pair<int, int> pii;
-vector <pii> v[MAX_N];
-int times[MAX_N];
-
-
-void dijkstra(int x, int tc) {
-
-	//printf("dijkstra tc: %d\n", tc);
-
-	priority_queue <pii, vector<pii>, greater<pii>> pq;
-	times[x] = 0;	//자기자신을 0으로 설정
-
-
-	pq.push(make_pair(0, x));
-
-	while (!pq.empty()) {
-		int t = pq.top().first;			//현재 시간
-		int cnt = pq.top().second;		//현재 노드
-
-		pq.pop();
-
-
-		for (i = 0; i < v[cnt].size(); i++) {
-			int nextTime = v[cnt][i].first + t;	//현재 시간+ 가는시간
-			int next = v[cnt][i].second;		//다음 노드
-
-			if (times[next] > nextTime)
-				times[next] = nextTime;
-			pq.push(make_pair(nextTime, next));	//큐에 담음
-		}
-
-	}//while
-
-	//INF가 아닌 수 중에서 가장 큰 값이 모든 PC 감염 시간
-	//INF가 아닌 수들의 개수가 감염된 컴퓨터의 수
-	int com = 0, t = 0;
-	for (i = 1; i <= n; i++) {
-		if (times[i] == INF)
-			continue;
-
-		com++;
-		t = max(t, times[i]);
+struct Edge {
+	int vex;
+	int cost;
+	Edge(int a, int b) {
+		vex = a;
+		cost = b;
 	}
 
-	printf("%d %d\n", com, t);
-}
+	bool operator<(const Edge &b) const {
+		return dis > b.dis;
+	}
 
+};
+typedef pair<int, int> pii;
+int dp[MAX_N];
 
 
 
@@ -76,6 +44,8 @@ int main() {
 	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_10282.txt", "r", stdin);
 	freopen("D:/Git/SWCert/input/BOJ_10282.txt", "r", stdin);
 
+	priority_queue<Edge> Q;
+	vector <pii> v[MAX_N];
 	scanf("%d", &tc);
 	//printf("tc: %d\n", tc);
 
@@ -84,17 +54,21 @@ int main() {
 		scanf("%d %d %d", &n, &d, &c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
 		//printf("i:%dth, n: %d, d: %d, c: %d\n", i, n, d, c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
 
+		/*
 		for (j = 1; j <= n; j++) {
-			times[j] = INF;
+			dp[j] = INT32_MAX;
 		}
+		*/
+		fill(dp, dp + MAX_N, INT32_MAX);
 
+		//b가 감염된후 s초뒤에 a도 감염됨
 		for (j = 1; j <= d; j++) {
-			scanf("%d %d %d", &target, &start, &cost);
-			v[start].push_back(make_pair(cost, target));
+			scanf("%d %d %d", &a, &b, &s);
+			v[b].push_back(make_pair(a, s));
 		}
 
-		dijkstra(c, i);
-	}//for
+		
+	}//while
 
 	return 0;
 }
