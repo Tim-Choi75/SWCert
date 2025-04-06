@@ -19,6 +19,19 @@ typedef pair<int, int> pii;
 vector <pii> v[MAX_N];
 int dist[MAX_N];
 
+struct Edge {
+	int node;
+	int cost;
+	Edge(int a, int b) {
+		node = a;
+		cost = b;
+	}
+
+	bool operator<(const Edge &b) const {
+		return cost > b.cost;
+	}
+};
+
 
 int main() {
 
@@ -28,46 +41,45 @@ int main() {
 	scanf("%d %d", &n, &m);
 
 	int a, b, c;
-
+	priority_queue<Edge> Q;
+	vector<pii> graph[MAX_N];
+	   
 	for (i = 0; i < m; i++) {
 		scanf("%d %d %d", &a, &b, &c);
+		printf("a: %d, b: %d, c: %d\n", a, b, c);
 		v[a].push_back({ b, c });	
 	}
 
-	for (i = 0; i < n; i++) {
-		dist[i] = INF;		
-	}
+	vector<int> dist(n + 1, INF);
 
-	
+	Q.push(Edge(1, 0));
 	dist[1] = 0;
-	priority_queue <pii, vector<pii>, greater<pii>> pq;
-	pq.push({ 1, 0 });	//start, 0
 
-	while (!pq.empty()) {
+	while (!Q.empty()) {
 		
-		int curr = pq.top().first;	//현재 정점
-		int cost = pq.top().second;	//현재 시간
+		int now		= Q.top().node;	//현재 정점
+		int nowCost	= Q.top().cost;	//현재 시간
 
-		printf("curr: %d, cost: %d\n", curr, cost);
-		pq.pop();
+		printf("now: %d, nowCost: %d\n", now, nowCost);
+		Q.pop();
 
 		//최단 거리가 아닌 경우는 skip		
-		if (dist[curr] < cost)
+		if (nowCost < dist[now])
 			continue;
 
-		for (i = 0; i < v[curr].size(); i++) {
+		for (i = 0; i < graph[now].size(); i++) {
 			//선택된 노드의 인접 노드
-			int next = v[curr][i].first;
+			int next = graph[now][i].first;
 			//선택된 노드 거쳐서 인접노트고 가는 비용
-			int nextCost = cost + v[curr][i].second;
-			if (nextCost < dist[next]) {
+			int nextCost = nowCost + graph[now][i].second;
+			if (dist[next] > nextCost) {
 				dist[next] = nextCost;
-				pq.push({ next, nextCost });
+				Q.push(Edge(next, nextCost));
 			}
 		}//for
 
 	}//while
 
-	printf("dist: %d\n", dist[n-1]);
+	printf("dist: %d\n", dist[n]);
 	return 0;
 }
