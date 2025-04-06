@@ -41,20 +41,20 @@ int main() {
 	dist[1] = 0;
 	while (!Q.empty()) {
 		int now = Q.top().vex;
-		int nowDist = Q.top().dis;
+		int nowCost = Q.top().dis;
 
 		Q.pop();
 
-		if (nowDist > dist[now])
+		if (nowCost > dist[now])
 			continue;
 
 		for (i = 0; i < graph[now].size(); i++) {
 			int next = graph[now][i].first;
-			int nexDist = nowDist + graph[now][i].second;
+			int nexCost = nowCost + graph[now][i].second;
 
-			if (dist[next] > nexDist) {
-				dist[next] = nexDist;
-				Q.push(Edge(next, nexDist));
+			if (dist[next] > nexCost) {
+				dist[next] = nexCost;
+				Q.push(Edge(next, nexCost));
 			}//if
 		}//for
 	}//while
