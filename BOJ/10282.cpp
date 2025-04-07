@@ -22,10 +22,10 @@ int tc, n, d, c, a, b, s;
 int i, j, k;
 
 struct Edge {
-	int vex;
+	int node;
 	int cost;
 	Edge(int a, int b) {
-		vex = a;
+		node = a;
 		cost = b;
 	}
 
@@ -59,13 +59,15 @@ int main() {
 			dp[j] = INT32_MAX;
 		}
 		*/
-		fill(dp, dp + MAX_N, INT32_MAX);
+		vector<int> dist(n+1, INF)
 
 		//b°¡ °¨¿°µÈÈÄ sÃÊµÚ¿¡ aµµ °¨¿°µÊ
 		for (j = 1; j <= d; j++) {
 			scanf("%d %d %d", &a, &b, &s);
 			v[b].push_back(make_pair(a, s));
 		}
+
+		Q.push
 
 		
 	}//while
