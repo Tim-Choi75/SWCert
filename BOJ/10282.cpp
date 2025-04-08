@@ -20,6 +20,7 @@ using namespace std;
 
 int tc, n, d, c, a, b, s;
 int i, j, k;
+typedef pair<int, int> pii;
 
 struct Edge {
 	int node;
@@ -30,12 +31,11 @@ struct Edge {
 	}
 
 	bool operator<(const Edge &b) const {
-		return dis > b.dis;
+		return cost > b.cost;
 	}
 
 };
-typedef pair<int, int> pii;
-int dp[MAX_N];
+
 
 
 
@@ -45,32 +45,64 @@ int main() {
 	freopen("D:/Git/SWCert/input/BOJ_10282.txt", "r", stdin);
 
 	priority_queue<Edge> Q;
-	vector <pii> v[MAX_N];
+	vector <pii> graph[MAX_N];
 	scanf("%d", &tc);
-	//printf("tc: %d\n", tc);
+	printf("tc: %d\n", tc);
 
 	while(tc--) {
 	//for (i = 1; i <= tc; i++) {
 		scanf("%d %d %d", &n, &d, &c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
-		//printf("i:%dth, n: %d, d: %d, c: %d\n", i, n, d, c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
+		printf("tc: %dth, n: %d, d: %d, c: %d\n", tc, n, d, c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
 
 		/*
 		for (j = 1; j <= n; j++) {
 			dp[j] = INT32_MAX;
 		}
 		*/
-		vector<int> dist(n+1, INF)
+		vector<int> dist(n + 1, INF);
 
 		//b가 감염된후 s초뒤에 a도 감염됨
 		for (j = 1; j <= d; j++) {
 			scanf("%d %d %d", &a, &b, &s);
-			v[b].push_back(make_pair(a, s));
+			printf("a: %d, b: %d, s: %d\n", a, b, s);	//a:노드수, b: 의존성, s: 해킹당한 컴퓨
+			graph[b].push_back(make_pair(a, s));
 		}
 
-		Q.push
+		Q.push(Edge(c, 0));
+		dist[c] = 0;
 
+		while (!Q.empty()) {
+			int now = Q.top().node;
+			int nowCost = Q.top().cost;
 		
-	}//while
+			Q.pop();
+
+			if (nowCost > dist[now])
+				continue;
+
+			for (i = 0; i < graph[now].size(); i++) {
+				int next = graph[now][i].first;
+				int nextCost = nowCost + graph[now][i].second;
+
+				if (dist[next] > nextCost) {
+					dist[next] = nextCost;
+					Q.push(Edge(next, nextCost));
+				}//if
+			}//for
+		}//while-PQ
+
+		int com = 0, t = 0;
+		for (i = 1; i <= n; i++) {
+			if (dist[i] == INF)
+				continue;
+
+			com++;
+			t = max(t, dist[i]);
+			printf("%d %d\n", com , t);
+
+		}
+		
+	}//while-tc
 
 	return 0;
 }
