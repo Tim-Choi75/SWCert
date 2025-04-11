@@ -45,7 +45,6 @@ int main() {
             dist[j] = INF;
         
         dist[start]=0;
-        
         pq.push(make_pair(start, 0));
 
         while(!pq.empty()) {
@@ -66,6 +65,7 @@ int main() {
                 printf("next: %d,  nextCost: %d\n", next, nextCost);
 
                 if(dist[next] > nextCost) {
+                    printf("IN: next: %d,  dist[next]: %d, nextCost: %d\n", next, dist[next], nextCost);
                     dist[next] = nextCost;
                     pq.push(make_pair(next, nextCost));
                 }//if
