@@ -48,13 +48,13 @@ int main() {
 
 	priority_queue<Edge> Q;
 	scanf("%d", &tc);
-	printf("tc: %d\n", tc);
+	//printf("tc: %d\n", tc);
 	vector<vector <pii>> graph;
 
 	while (tc--) {
 		//for (i = 1; i <= tc; i++) {
 		scanf("%d %d %d", &n, &d, &c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
-		printf("tc: %dth, n: %d, d: %d, c: %d\n", tc, n, d, c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
+		//printf("tc: %dth, n: %d, d: %d, c: %d\n", tc, n, d, c);	//n:노드수, d: 의존성, c: 해킹당한 컴퓨터
 
 		/*
 		for (j = 1; j <= n; j++) {
@@ -67,7 +67,7 @@ int main() {
 		//b가 감염된후 s초뒤에 a도 감염됨
 		for (j = 1; j <= d; j++) {
 			scanf("%d %d %d", &a, &b, &s);
-			printf("a: %d, b: %d, s: %d\n", a, b, s);	//a:노드수, b: 의존성, s: 해킹당한 컴퓨
+			//printf("a: %d, b: %d, s: %d\n", a, b, s);	//a:노드수, b: 의존성, s: 해킹당한 컴퓨
 			graph[b].push_back(make_pair(a, s));
 		}
 
@@ -101,9 +101,11 @@ int main() {
 
 			com++;
 			t = max(t, dist[i]);
-			printf("%d %d\n", com, t);
-
 		}
+		
+		printf("%d %d\n", com, t);
+
+
 
 	}//while-tc
 
