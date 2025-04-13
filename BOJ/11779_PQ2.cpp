@@ -10,6 +10,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <stack>
 
 using namespace std;
 
@@ -44,18 +45,20 @@ int main() {
 	int s, e;
 	scanf("%d %d", &s, &e);
 	
-	printf("s: %d, e: %d\n", s, e);
+	//printf("s: %d, e: %d\n", s, e);
 
 	priority_queue <pii, vector<pii>, greater<pii>> pq;
 	pq.push(make_pair(s, 0));
 	dist[s] = 0;
+	//경로저장
 	int route[MAX_N];
+	stack<int> st;
 
 	while (!pq.empty()) {
 		int now = pq.top().first;
 		int nowCost = pq.top().second;
 
-		printf("now: %d, nowCost: %d\n", now, nowCost);
+		//printf("now: %d, nowCost: %d\n", now, nowCost);
 
 		pq.pop();
 
@@ -65,7 +68,7 @@ int main() {
 		for (i = 0; i < graph[now].size(); i++) {
 			int next = graph[now][i].first;
 			int nextCost = nowCost + graph[now][i].second;
-			printf("OUT now: %d, size: %d, next: %d, nextCost: %d\n", now, graph[now].size(), next, nextCost);
+			//printf("OUT now: %d, size: %d, next: %d, nextCost: %d\n", now, graph[now].size(), next, nextCost);
 
 			if (dist[next] > nextCost) {
 				dist[next] = nextCost;
@@ -78,10 +81,24 @@ int main() {
 
 	}//while
 
+	/*
 	for (i = s; i <= e; i++) {
 		printf("%d ", dist[i]);
 	}
-	//printf("%d\n", dist[e-1]);
+	*/
+	
+	for (i = e; i != s; i = route[i])
+		st.push(i);
+	st.push(s);
+
+	printf("%d\n", dist[e]);
+	printf("%d\n", st.size());
+
+	while (!st.empty()) {
+		printf("%d ", st.top());
+		st.pop();
+	}
+
 	return 0;
 
 
