@@ -6,7 +6,7 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 #define MAX_N 126
-#define INF 987654321
+#define INF 1e9
 
 #include <stdio.h>
 #include <iostream>
@@ -18,28 +18,34 @@ int N, i, j;
 typedef pair<int, int> pii;
 vector<pii> v[MAX_N];
 int dist[MAX_N];
+int tc = 1;
 
 void dijkstra(int st) {
 
+	for (i = 1; i <= N; i++) {
+		dist[i] = INF;
+	}
+
+
 	priority_queue<pii, vector<pii>, greater<pii>> pq;
-	pq.push(make_pair(0, st));
+	pq.push(make_pair(st, 0));
 	dist[st] = 0;
 
 	while (!pq.empty()) {
-		int cost = pq.top().first;	//현재 비용
-		int curr = pq.top().second;	//현재 정점
+		int now = pq.top().first;		//현재 비용
+		int nowCost = pq.top().second;	//현재 정점
 
 		pq.pop();
 		
-		printf("v.[curr].size: %d", v[curr].size());
+		//printf("v.[now].size: %d", v[now].size());
 
-		for (i = 1; i < v[curr].size(); i++) {
-			int next = v[curr][i].first;
-			int ncost = cost + v[curr][i].second;
+		for (i = 0; i < v[now].size(); i++) {
+			int next = v[now][i].first;
+			int nextCost = nowCost + v[now][i].second;
 
-			if (dist[next] > ncost) {
-				dist[next] = ncost;
-				pq.push(make_pair(ncost, next));
+			if (dist[next] > nextCost) {
+				dist[next] = nextCost;
+				pq.push(make_pair(next, nextCost));
 			}//if
 		}//for
 	}//while
@@ -48,33 +54,31 @@ void dijkstra(int st) {
 
 int main()
 {
-
-	//freopen("D:/Git/SWCert/input/BOJ_4485.txt", "r", stdin);
+	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_4485.txt", "r", stdin);
+	freopen("D:/Git/SWCert/input/BOJ_4485.txt", "r", stdin);
 
 	while (true) {
 
 		scanf("%d", &N);
-		printf("N: %d", N);
+		printf("N: %d\n", N);
 
 		if (N == 0)
 			break;
 
-		int a, b, c;
+		int cost=0;
 		for (i = 1; i <= N; i++) {
-			for (i = j; j <= N; j++) {
-				scanf("%d %d %d", &a, &b, &c);
+			for (j = 1; j <= N; j++) {
+				scanf("%d", &cost);
 				//printf("a: %d, b: %d, c: %d\n", a, b, c);
-				v[a].push_back(make_pair(b, c));
+				v[i].push_back(make_pair(j, cost));
 			}
 		}
 
-		for (i = 1; i <= N; i++) {
-			dist[i] = INF;
-		}
 
-		dijkstra(0);
+		dijkstra(1);
 
-		printf("%d\n", dist[N*N]);
+		printf("Problem %d: %d\n", tc, dist[N*N]);
+		tc++;
 
 	}
 
