@@ -31,6 +31,12 @@ void dijkstra(int st) {
 
 		pq.pop();
 
+		if (dist[now] < nowCost) {
+			printf("now: %d, dist[now]: %d, nowCost: %d skipped\n", now, dist[now], nowCost);
+			continue;
+		}
+			
+
 		for (i = 0; i < v[now].size(); i++) {
 
 			int next = v[now][i].first;
@@ -48,8 +54,8 @@ void dijkstra(int st) {
 int main() {
 
 	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_1916.txt", "r", stdin);
-	freopen("D:/Git/SWCert/input/BOJ_1916.txt", "r", stdin);
-	//freopen("D:/Git/SWCert/input/BOJ_1916_CE.txt", "r", stdin);	//CE_¹Ý·Ê(CounterExample)
+	//freopen("D:/Git/SWCert/input/BOJ_1916.txt", "r", stdin);
+	freopen("D:/Git/SWCert/input/BOJ_1916_CE.txt", "r", stdin);	//CE_¹Ý·Ê(CounterExample)
 
 	//N: µµ½Ã, M: ¹ö½º
 	int N, M;
