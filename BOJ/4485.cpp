@@ -1,9 +1,8 @@
-//최단경로 
+//백준 4485-녹색 옷 입은 애가 젤다지?
 //https://www.acmicpc.net/problem/4485
 //Algo: Dijkstra
-//Solu:https://yabmoons.tistory.com/376
-//Solve: https://codejin.tistory.com/230
-
+//Solu: https://yabmoons.tistory.com/376
+//		https://kau-algorithm.tistory.com/1206
 #define _CRT_SECURE_NO_WARNINGS
 #define MAX_N 126
 #define INF 1e9
@@ -17,14 +16,11 @@ using namespace std;
 int N, i, j;
 typedef pair<int, int> pii;
 vector<pii> v[MAX_N];
-int dist[MAX_N];
+int map[MAX_N][MAX_N];
+int dist[MAX_N][MAX_N];
 int tc = 1;
 
 void dijkstra(int st) {
-
-	for (i = 1; i <= N; i++) {
-		dist[i] = INF;
-	}
 
 
 	priority_queue<pii, vector<pii>, greater<pii>> pq;
@@ -34,6 +30,7 @@ void dijkstra(int st) {
 	while (!pq.empty()) {
 		int now = pq.top().first;		//현재 비용
 		int nowCost = pq.top().second;	//현재 정점
+		printf("now: %d, nowCost: %d\n", now, nowCost);
 
 		pq.pop();
 		
@@ -42,6 +39,8 @@ void dijkstra(int st) {
 		for (i = 0; i < v[now].size(); i++) {
 			int next = v[now][i].first;
 			int nextCost = nowCost + v[now][i].second;
+			
+			printf("now: %d, v.[now].size: %d, next: %d, nextCost: %d\n", now, v[now].size(), next, nextCost);
 
 			if (dist[next] > nextCost) {
 				dist[next] = nextCost;
@@ -66,16 +65,22 @@ int main()
 			break;
 
 		int cost=0;
+		//map배열 입력
 		for (i = 1; i <= N; i++) {
 			for (j = 1; j <= N; j++) {
 				scanf("%d", &cost);
-				//printf("a: %d, b: %d, c: %d\n", a, b, c);
-				v[i].push_back(make_pair(j, cost));
+				map[i][j] = cost;
 			}
 		}
 
+		//dist배열 초기화
+		for (i = 1; i <= N; i++) {
+			for (j = 1; j <= N; j++) {
+				dist[i][j] = INF;
+			}
+		}
 
-		dijkstra(1);
+		dijkstra();
 
 		printf("Problem %d: %d\n", tc, dist[N*N]);
 		tc++;
