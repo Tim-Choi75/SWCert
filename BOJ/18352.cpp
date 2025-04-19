@@ -43,7 +43,7 @@ int main() {
 	q.push(X);
 
 	dist[X] = 0;
-	pq.push(X);
+	q.push(X);
 
 	while (!q.empty()) {
 
@@ -51,7 +51,7 @@ int main() {
 		q.pop();
 
 		for (i = 0; i < v[now].size(); i++) {
-			int next = v[now][i]			
+			int next = v[now][i];
 
 			if (dist[next] > dist[now]+1) {
 				dist[next] > dist[now] + 1;
