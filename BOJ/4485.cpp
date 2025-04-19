@@ -23,9 +23,10 @@ int tc = 1;
 void dijkstra(int st) {
 
 
-	priority_queue<pii, vector<pii>, greater<pii>> pq;
-	pq.push(make_pair(st, 0));
-	dist[st] = 0;
+	priority_queue<pair<int, pii>> pq;
+	pq.push(make_pair(-map[0][0], make_pair(0, 0)));
+
+	dist[0][0]=map[0][0]
 
 	while (!pq.empty()) {
 		int now = pq.top().first;		//현재 비용
@@ -64,12 +65,12 @@ int main()
 		if (N == 0)
 			break;
 
-		int cost=0;
+		int rupee =0;
 		//map배열 입력
 		for (i = 1; i <= N; i++) {
 			for (j = 1; j <= N; j++) {
-				scanf("%d", &cost);
-				map[i][j] = cost;
+				scanf("%d", &rupee);
+				map[i][j] = rupee;
 			}
 		}
 
