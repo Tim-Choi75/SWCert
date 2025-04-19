@@ -2,6 +2,7 @@
 //https://www.acmicpc.net/problem/18352
 //Algo: Dijkstra
 //Solve: https://tinyurl.com/29qc4bje
+		 https://go2gym365.tistory.com/210
 
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -12,10 +13,9 @@
 
 #define MAX_N 300001
 #define INF 1e9
-
 using namespace std;
-typedef pair<int, int> pii;
 
+typedef pair<int, int> pii;
 
 int main() {
 
@@ -28,10 +28,14 @@ int main() {
 	int N, M, K, X, i;
 
 	scanf("%d %d %d %d", &N, &M, &K, &X);
-	printf("N: %d, M: %d, K: %d, X: %d\n", N, M, K, X);
+	//printf("N: %d, M: %d, K: %d, X: %d\n", N, M, K, X);
 
 	vector<int> v[MAX_N];
-	vector<int> dist(N + 1, INF);	//거리벡터 초기화
+
+	int dist[MAX_N];	//거리벡터 초기화
+	for (i = 1; i <= N; i++) {
+		dist[i] = INF;
+	}
 
 	int from, to;
 	for (i = 1; i <= M; i++) {
@@ -39,23 +43,29 @@ int main() {
 		v[from].push_back(to);
 	}
 
-	queue<int> q;
-	q.push(X);
+	priority_queue<pii> pq;
+	pq.push({ X, 0 });
 
 	dist[X] = 0;
-	q.push(X);
+	
+	while (!pq.empty()) {
 
-	while (!q.empty()) {
+		int now = pq.top().first;
+		int nowCost = pq.top().second;
 
-		int now = q.front();
-		q.pop();
+		pq.pop();
+
+		if (dist[now] < nowCost)
+			continue;
+
 
 		for (i = 0; i < v[now].size(); i++) {
 			int next = v[now][i];
+			int nextCost = nowCost + 1;
 
-			if (dist[next] > dist[now]+1) {
-				dist[next] > dist[now] + 1;
-				q.push(next);
+			if (dist[next] > nextCost) {
+				dist[next] = nextCost;
+				pq.push({ next, nextCost });
 			}//if
 		}//for
 	}//while
