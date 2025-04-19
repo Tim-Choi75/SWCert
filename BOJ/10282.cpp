@@ -36,7 +36,7 @@ struct Edge {
 		return cost > b.cost;
 	}
 
-};
+};about:blank#blocked
 
 
 
