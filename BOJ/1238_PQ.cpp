@@ -35,7 +35,7 @@ void dijkstra(int num) {
 		int now = pq.top().first;
 		int nowCost = pq.top().second;
 		
-		printf("num: %d, now: %d, nowCost: %d\n", num, now, nowCost);
+		//printf("num: %d, now: %d, nowCost: %d\n", num, now, nowCost);
 
 		pq.pop();
 
@@ -54,8 +54,8 @@ void dijkstra(int num) {
 
 int main() {
 
-	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_1238.txt", "r", stdin);
-	freopen("D:/Git/SWCert/input/BOJ_1238.txt", "r", stdin);
+	freopen("/Users/timchoi/Git/SWCert/input/BOJ_1238.txt", "r", stdin);
+	//freopen("D:/Git/SWCert/input/BOJ_1238.txt", "r", stdin);
 
 	scanf("%d %d %d", &N, &M, &X);
 	//printf("N: %d, M: %d, X: %d\n", N, M, X);
@@ -67,7 +67,7 @@ int main() {
 		v[A].push_back(make_pair(B, T));
 	}
 
-	fill(&dist[0][0], &dist[MAX_N][MAX_N], INF);
+	fill(&dist[0][0], &dist[MAX_N-1][MAX_N], INF);
 	
 	for (i = 1; i <= N; i++)
 		dijkstra(i);

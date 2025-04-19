@@ -1,7 +1,7 @@
 //백준 4485-녹색 옷 입은 애가 젤다지?
 //https://www.acmicpc.net/problem/4485
 //Algo: Dijkstra
-//Solu: https://yabmoons.tistory.com/376
+//Solu: https://yabmoons.tistory.com/388
 //		https://kau-algorithm.tistory.com/1206
 #define _CRT_SECURE_NO_WARNINGS
 #define MAX_N 126
@@ -18,44 +18,49 @@ typedef pair<int, int> pii;
 vector<pii> v[MAX_N];
 int map[MAX_N][MAX_N];
 int dist[MAX_N][MAX_N];
-int tc = 1;
+int dx[]={0, 0, 1, -1};
+int dy[]={1, -1, 0, -0};
 
-void dijkstra(int st) {
+int tc = 1, ans;
+
+void dijkstra() {
 
 
 	priority_queue<pair<int, pii>> pq;
 	pq.push(make_pair(-map[0][0], make_pair(0, 0)));
 
-	dist[0][0]=map[0][0]
+	dist[0][0]=map[0][0];
 
 	while (!pq.empty()) {
-		int now = pq.top().first;		//현재 비용
-		int nowCost = pq.top().second;	//현재 정점
-		printf("now: %d, nowCost: %d\n", now, nowCost);
+		int cost = pq.top().first;	
+		int x = pq.top().second.first;		//현재 비용
+		int y = pq.top().second.second;		//현재 정점
+		printf("cost: %d, x: %d, y: %d\n", cost, x, y);
 
 		pq.pop();
 		
 		//printf("v.[now].size: %d", v[now].size());
 
-		for (i = 0; i < v[now].size(); i++) {
-			int next = v[now][i].first;
-			int nextCost = nowCost + v[now][i].second;
-			
-			printf("now: %d, v.[now].size: %d, next: %d, nextCost: %d\n", now, v[now].size(), next, nextCost);
+		for (i = 0; i<4; i++) {
+			int nx = x+dx[i];
+			int ny = y+dy[i];
 
-			if (dist[next] > nextCost) {
-				dist[next] = nextCost;
-				pq.push(make_pair(next, nextCost));
-			}//if
-		}//for
+			if(nx>=0 && ny>=0 && nx<N && ny<N) {
+				int nCost = cost + map[nx][ny];
+				if(dist[nx][ny] > nCost) {
+					dist[nx][ny]=nCost;
+					pq.push(make_pair(-dist[nx][ny], make_pair(nx, ny)));
+				}//if dist
+			}//if nx 
+		}//for i
 	}//while
-
+	ans=dist[N-1][N-1];
 }
 
 int main()
 {
-	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_4485.txt", "r", stdin);
-	freopen("D:/Git/SWCert/input/BOJ_4485.txt", "r", stdin);
+	freopen("/Users/timchoi/Git/SWCert/input/BOJ_4485.txt", "r", stdin);
+	//freopen("D:/Git/SWCert/input/BOJ_4485.txt", "r", stdin);
 
 	while (true) {
 
@@ -83,7 +88,7 @@ int main()
 
 		dijkstra();
 
-		printf("Problem %d: %d\n", tc, dist[N*N]);
+		printf("Problem %d: %d\n", tc, ans);
 		tc++;
 
 	}
