@@ -21,7 +21,7 @@ typedef pair<int, int> pii;
 int dist[MAX_N];
 vector <pii> v[MAX_N];
 
-int n, m, i;
+int n, m, i, s, t;
 
 void dijkstra(int st) {
 
@@ -34,13 +34,20 @@ void dijkstra(int st) {
 		int nowCost = pq.top().second;
 
 		//printf("now: %d, nowCost: %d\n", now, nowCost);
-
 		pq.pop();
+
+		if(dist[now] < nowCost)
+			continue;
+		
+		if(now ==t) {
+			printf("%d\n", nowCost);
+			return;
+		}
+			
 
 		for (i = 0; i < v[now].size(); i++) {
 			int next = v[now][i].first;
 			int nextCost = nowCost+ v[now][i].second;
-
 			//printf("v[now].size(): %d, next: %d, nextCost: %d\n", v[now].size(), next, nextCost);
 
 			if (dist[next] > nextCost) {
@@ -58,8 +65,8 @@ void dijkstra(int st) {
 
 int main() {
 
-	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_14284.txt", "r", stdin);
-	freopen("D:/Git/SWCert/input/BOJ_14284.txt", "r", stdin);
+	freopen("/Users/timchoi/Git/SWCert/input/BOJ_14284.txt", "r", stdin);
+	//freopen("D:/Git/SWCert/input/BOJ_14284.txt", "r", stdin);
 
 	scanf("%d %d", &n, &m);
 	//printf("n: %d, m: %d\n", n, m);
@@ -76,11 +83,10 @@ int main() {
 	}
 
 	//s: ½ÃÀÛ, e: µµÂø
-	int s, t;
 	scanf("%d %d", &s, &t);
 	dijkstra(s);
 
-	printf("%d\n", dist[t]);
+	//printf("%d\n", dist[t]);
 
 	return 0;
 }
