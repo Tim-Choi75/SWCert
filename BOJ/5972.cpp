@@ -4,14 +4,12 @@
 //DataStructure: Priority Queue
 //Solu: 
 
-
 #define  _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
 #include <stdio.h>
 #include <queue>
 #include <vector>
-
 
 using namespace std;
 typedef pair<int, int> pii;
@@ -35,8 +33,22 @@ void dijkstra(int st) {
 		int now = pq.top().first;
 		int nowCost = pq.top().second;
 
-	}
+		printf("now: %d, nowCost: %d\n", now, nowCost);
 
+		pq.pop();
+
+		for (i = 0; i < v[now].size(); i++) {
+			int next = v[now][i].first;
+			int nextCost = nowCost+ v[now][i].second;
+
+			printf("v[now].size(): %d, next: %d, nextCost: %d\n", v[now].size(), next, nextCost);
+
+			if (cost[next] > nextCost) {
+				cost[next] = nextCost;
+				pq.push({ next, nextCost });
+			}
+		}
+	}
 }
 
 
@@ -52,6 +64,7 @@ int main() {
 		
 		scanf("%d %d %d", &A, &B, &C);
 		v[A].push_back({ B, C });
+		v[B].push_back({ A, C });
 	}
 
 	for (i = 0; i < N; i++) {
@@ -59,6 +72,8 @@ int main() {
 	}
 
 	dijkstra(1);
+
+	printf("%d\n", cost[N]);
 
 	return 0;
 }
