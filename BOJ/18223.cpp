@@ -88,8 +88,13 @@ int main() {
 	int dist_to_v = dist[V];
 	int dist_to_p = dist[P];
 
+	printf("-------------------\n");
+	printf("dist_to_v: %d, dist_to_p: %d\n", dist_to_v, dist_to_p);
+
 	dijkstra(P);
 	int dist_from_p_to_v = dist[V];
+
+	printf("dist_from_p_to_v: %d\n", dist_from_p_to_v);
 
 	//건우(P)를 거쳐가는 경로와 아닌 경로의 최단거리를 비교
 	if (dist_to_p + dist_from_p_to_v <= dist_to_v) {
@@ -98,12 +103,6 @@ int main() {
 	else {
 		printf("GOOD BYE\n");
 	}
-
-	
-	for (i = 1; i <= V; i++) {		
-		printf("%d ", dist[i]);
-	}
-	
 		
 	return 0;
 }
