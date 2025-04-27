@@ -1,7 +1,7 @@
 //백준(BOJ) 18223 - 민준이와 마산 그리고 건우
 //https://www.acmicpc.net/problem/18223
 //Algo: Dijkstra
-//Solve: 
+//Solve: https://2jinishappy.tistory.com/244
 
 #define  _CRT_SECURE_NO_WARNINGS
 
@@ -23,7 +23,9 @@ void dijkstra(int st) {
 
 	priority_queue<pii, vector<pii>, greater<pii>> pq;
 
+	dist[st] = 0;
 	pq.push({ st, 0 });
+
 	while (!pq.empty()) {
 
 		int now = pq.top().first;
@@ -39,6 +41,7 @@ void dijkstra(int st) {
 			printf("[%d], next: %d, nextCost: %d\n", i, next, nextCost);
 
 			if (dist[i] > nextCost) {
+
 				printf("IN next: %d, nextCost: %d\n", next, nextCost);
 				dist[i] = nextCost;
 				pq.push({ next, nextCost });
@@ -59,7 +62,7 @@ int main() {
 	//정점의 개수 V와 간선의 개수 E, 그리고 건우가 위치한 정점 P
 	int V, E, P;
 	scanf("%d %d %d", &V, &E, &P);
-
+	printf("V: %d, E: %d, P: %d\n", V, E, P);
 
 	int a, b, c;
 	for (i = 0; i < E; i++) {
