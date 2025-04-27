@@ -80,6 +80,11 @@ int main() {
 	}
 
 	dijkstra(1);
+
+	for (i = 1; i <= V; i++) {
+		printf("%d ", dist[i]);
+	}
+
 	int dist_to_v = dist[V];
 	int dist_to_p = dist[P];
 
@@ -94,12 +99,11 @@ int main() {
 		printf("GOOD BYE\n");
 	}
 
-	/*
-	printf("-----------\n");
+	
 	for (i = 1; i <= V; i++) {		
 		printf("%d ", dist[i]);
 	}
-	*/
+	
 		
 	return 0;
 }
