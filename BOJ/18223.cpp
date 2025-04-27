@@ -10,18 +10,26 @@
 #include <vector>
 #include <queue>
 using namespace std;
-#define isPrint 1
+#define isPrint 0
 
 #define MAX_N	5001
 #define INF		1e9
 
 typedef pair<int, int> pii;
 vector<pii> v[MAX_N];
+
+//정점의 개수 V와 간선의 개수 E, 그리고 건우가 위치한 정점 P
+int V, E, P;
 int dist[MAX_N], visit[MAX_N], i;
 
 
 void dijkstra(int st) {
 
+	for (i = 1; i <= V; i++) {
+		dist[i] = INF;
+		visit[i] = 0;
+	}
+	
 	priority_queue<pii, vector<pii>, greater<pii>> pq;	
 	dist[st] = 0;
 	pq.push({ st, 0 });
@@ -34,7 +42,7 @@ void dijkstra(int st) {
 
 		if (visit[now] == 1)
 			continue;
-		//if(isPrint) printf("now: %d, nowCost: %d\n", now, nowCost);
+		if(isPrint) printf("now: %d, nowCost: %d\n", now, nowCost);
 		
 		visit[now] = 1;
 		for (i = 0; i < v[now].size(); i++) {
@@ -62,9 +70,7 @@ int main() {
 	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_18223.txt", "r", stdin);
 	freopen("D:/Git/SWCert/input/BOJ_18223.txt", "r", stdin);
 	//freopen("D:/Git/SWCert/input/BOJ_18223_1.txt", "r", stdin);
-
-	//정점의 개수 V와 간선의 개수 E, 그리고 건우가 위치한 정점 P
-	int V, E, P;
+	
 	scanf("%d %d %d", &V, &E, &P);
 	if (isPrint) printf("V: %d, E: %d, P: %d\n", V, E, P);
 
@@ -75,26 +81,22 @@ int main() {
 		v[b].push_back({ a, c });	//양방향 간선
 	}
 
-	for (i = 1; i <= V; i++) {
-		dist[i] = INF;
-	}
-
 	dijkstra(1);
 
 	for (i = 1; i <= V; i++) {
-		printf("%d ", dist[i]);
+		if (isPrint) printf("%d ", dist[i]);
 	}
 
 	int dist_to_v = dist[V];
 	int dist_to_p = dist[P];
 
-	printf("-------------------\n");
-	printf("dist_to_v: %d, dist_to_p: %d\n", dist_to_v, dist_to_p);
+	if (isPrint) printf("-------------------\n");
+	if (isPrint) printf("dist_to_v: %d, dist_to_p: %d\n", dist_to_v, dist_to_p);
 
 	dijkstra(P);
 	int dist_from_p_to_v = dist[V];
 
-	printf("dist_from_p_to_v: %d\n", dist_from_p_to_v);
+	if (isPrint) printf("dist_from_p_to_v: %d\n", dist_from_p_to_v);
 
 	//건우(P)를 거쳐가는 경로와 아닌 경로의 최단거리를 비교
 	if (dist_to_p + dist_from_p_to_v <= dist_to_v) {
