@@ -18,13 +18,23 @@ typedef pair<int, int> pii;
 vector<pii> v[MAX_N];
 vector<int> dist(MAX_N, INF);
 
+//N: 정점 갯수, E 간선의 갯수
+int N, E, i;
+
+int dijkstra(int st) {
+
+	for(i=0; iM)
+
+
+	return 
+}
+
 int main() {
 
 	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_1504.txt", "r", stdin);
 	freopen("D:/Git/SWCert/input/BOJ_1504.txt", "r", stdin);
 
-	//N: 지름길 개수, D 고속도로 길이
-	int N, E, i;
+
 	scanf("%d %d", &N, &E);
 
 	//a: 시작, b: 도착, c:길이
@@ -32,21 +42,14 @@ int main() {
 	for (i = 1; i <= N; i++) {
 		scanf("%d %d %d", &a, &b, &c);
 		v[a].push_back({ b, c });
+		v[b].push_back({ a, c });
 	}
 
 	//v1, v2 거처야하는 정점
-	int v1, v2;
+	int v1, v2, ans = 0;
 	scanf("%d %d", &v1, &v2);
-	dist[0] = 0;
 
-	for (i = 1; i <= D; i++) {
-		dist[i] = dist[i - 1] + 1;
-		for (j = 0; j < (int)v[i].size(); j++) {
-			dist[i] = min(dist[i], dist[v[i][j].first] + v[i][j].second);
-		}
-	}
-
-	printf("%d\n", dist[D]);
+	printf("%d\n", dist[N]);
 
 	return 0;
 }
