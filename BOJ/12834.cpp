@@ -22,8 +22,8 @@ int house[MAX_N];	//N명의 집 위치
 int N, V, E;	//기사단 팀원의 수 N, 장소의 수 V, 도로의 수 E
 int A, B, ans=0;	//KIST의 위치 A와 씨알푸드의 위치 B
 
-void init() {
-	if (isPrint) printf("init()\n");
+void init_Dist() {
+	if (isPrint) printf("init_Dist()\n");
 	for (i = 1; i <= V; i++) {
 		dist[i] = INF;
 	}
@@ -36,7 +36,7 @@ void dijkstra() {
 
 		if (isPrint) printf("dijkstra() N: %d, i: %d\n", N, i);
 
-		init();
+		init_Dist();
 		priority_queue<pii, vector<pii>, greater<pii>> pq;
 		dist[house[i]] = 0;
 		pq.push({ house[i], 0 });
