@@ -32,7 +32,7 @@ void init_Dist() {
 
 void dijkstra() {
 
-	for (i = 1; i <= N; i++) {
+	for (int i = 1; i <= N; i++) {
 
 		if (isPrint) printf("dijkstra() N: %d, i: %d, house[i]: %d\n", N, i, house[i]);
 
@@ -45,10 +45,15 @@ void dijkstra() {
 			int now = pq.top().first;
 			int cost = pq.top().second;
 
-			printf("now: %d, cost: %d\n", now, cost);
+			if (isPrint) printf("now: %d, cost: %d\n", now, cost);
 
 			pq.pop();
 
+			if (dist[now] < cost) {
+				continue;
+			}
+
+			if (isPrint) printf("v[now].size(): %d\n", v[now].size());
 			for (int i = 0; i < v[now].size(); i++) {
 				int next = v[now][i].first;
 				int nextCost = cost + v[now][i].second;
@@ -60,10 +65,12 @@ void dijkstra() {
 			}
 		}//while
 
+		if (isPrint) printf("A: %d, B: %d\n", A, B);
+
 		int KIST_dist = dist[A];
 		int CRFood_dist = dist[B];
 
-		printf("KIST_dist: %d, CRFood_dist: %d\n", KIST_dist, CRFood_dist);
+		if (isPrint) printf("KIST_dist: %d, CRFood_dist: %d\n", KIST_dist, CRFood_dist);
 
 		if (KIST_dist == INF) {
 			KIST_dist = -1;
@@ -84,20 +91,20 @@ void input() {
 	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_12834.txt", "r", stdin);
 	freopen("D:/Git/SWCert/input/BOJ_12834.txt", "r", stdin);
 
-	int A, B, num;
+	int num;
 	scanf("%d %d %d", &N, &V, &E);	//기사단 팀원의 수 N, 장소의 수 V, 도로의 수 E
 	scanf("%d %d", &A, &B);			//KIST의 위치 A와 씨알푸드의 위치 B
 	if (isPrint) printf("N: %d, V: %d, E: %d A: %d, B: %d\n", N, V, E, A, B);
 
-	for (i = 1; i <= N; i++) {		//N명의 집 위치 저장
+	for (int i = 1; i <= N; i++) {		//N명의 집 위치 저장
 		scanf("%d", &num);
 		house[i] = num;
 	}
 
 	int a, b, l;	//a,b: 도로의 양끝, l: 도로 길이
-	for (i = 1; i <= E; i++) {	//도로 수 동안
+	for (int i = 1; i <= E; i++) {	//도로 수 동안
 		scanf("%d %d %d", &a, &b, &l);
-		printf("a: %d, b: %d, l: %d\n", a, b, l);
+		if (isPrint) printf("a: %d, b: %d, l: %d\n", a, b, l);
 		v[a].push_back({ b, l });
 		v[b].push_back({ a, l });
 	}
