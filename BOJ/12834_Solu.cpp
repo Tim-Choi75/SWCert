@@ -31,7 +31,7 @@ void Init() {
 
 void Input() {
 	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_12834.txt", "r", stdin);
-	freopen("D:/Git/SWCert/input/BOJ_12834.txt", "r", stdin);
+	//freopen("D:/Git/SWCert/input/BOJ_12834.txt", "r", stdin);
 
 	cin >> N >> V >> E;
 	cin >> KIST >> CRFOOD;
@@ -58,7 +58,7 @@ void Dijkstra() {
 			LL CurCost = -PQ.top().first;
 			int CurX = PQ.top().second;
 
-            printf("CurCost: %d, CurX: %d\n", CurCost, CurX);
+            //printf("CurCost: %d, CurX: %d\n", CurCost, CurX);
 
 
 			PQ.pop();
@@ -67,7 +67,7 @@ void Dijkstra() {
 				continue;
 			}
 
-            printf("Edge[CurX].size(): %d\n", Edge[CurX].size());
+            //printf("Edge[CurX].size(): %d\n", Edge[CurX].size());
             
 			for (int i = 0; i < Edge[CurX].size(); i++) {
 

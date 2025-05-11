@@ -1,7 +1,7 @@
-//백준(BOJ) 12834 - 주간 미팅
-//https://www.acmicpc.net/problem/12834
+//백준(BOJ) 14938 - 서강그라운드
+//https://www.acmicpc.net/problem/14938
 //Algo: Dijkstra
-//Solve: https://littlesam95.tistory.com/102
+//Solve: 
 
 #define  _CRT_SECURE_NO_WARNINGS
 
@@ -19,7 +19,7 @@ typedef pair<int, int> pii;
 vector<pii> v[MAX_N];
 int dist[MAX_N], i;
 int house[MAX_N];	//N명의 집 위치
-int N, V, E;	//기사단 팀원의 수 N, 장소의 수 V, 도로의 수 E
+int n, m, r;		//지역의 개수 n (1 ≤ n ≤ 100)과 예은이의 수색범위 m (1 ≤ m ≤ 15), 길의 개수 r (1 ≤ r ≤ 100)
 int A, B, ans = 0;	//KIST의 위치 A와 씨알푸드의 위치 B
 
 void init_Dist() {
@@ -88,10 +88,9 @@ void dijkstra() {
 
 void input() {
 
-	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_12834.txt", "r", stdin);
-	freopen("D:/Git/SWCert/input/BOJ_12834.txt", "r", stdin);
+	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_14938.txt", "r", stdin);
+	freopen("D:/Git/SWCert/input/BOJ_14938.txt", "r", stdin);
 
-	int num;
 	scanf("%d %d %d", &N, &V, &E);	//기사단 팀원의 수 N, 장소의 수 V, 도로의 수 E
 	scanf("%d %d", &A, &B);			//KIST의 위치 A와 씨알푸드의 위치 B
 	if (isPrint) printf("N: %d, V: %d, E: %d A: %d, B: %d\n", N, V, E, A, B);
