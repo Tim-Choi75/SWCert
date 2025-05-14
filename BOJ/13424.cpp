@@ -32,71 +32,75 @@ void init_Dist() {
 
 
 void dijkstra(int st) {
-    init_Dist();
-    priority_queue <pii, vector<pii>, greater<pii> > pq;
-    
-    dist[st]=0;
-    pq.push({st, 0});
-    while(!pq.empty()) {
-        int now = pq.top().first;
-        int nowCost = pq.top().second;
-        pq.pop();
+	init_Dist();
+	priority_queue <pii, vector<pii>, greater<pii> > pq;
 
-        for(int i=0; i<v[now].size(); i++) {
-            int next = v[now][i].first;
-            int nextCost = nowCost+v[now][i].second;            
-        
-            if(dist[next]> nextCost) {
-                dist[next]=nextCost;
-                answer[next]+=nextCost;
-                pq.push({next, nextCost});
-            }
-        }
-    }
+	dist[st] = 0;
+	pq.push({ st, 0 });
+	while (!pq.empty()) {
+		int now = pq.top().first;
+		int nowCost = pq.top().second;
+		pq.pop();
+
+		for (int i = 0; i < v[now].size(); i++) {
+			int next = v[now][i].first;
+			int nextCost = nowCost + v[now][i].second;
+
+			if (dist[next] > nextCost) {
+				dist[next] = nextCost;
+				answer[next] += nextCost;
+				pq.push({ next, nextCost });
+			}
+		}
+	}
 
 }
 
 void input() {
 
-	freopen("/Users/timchoi/Git/SWCert/input/BOJ_13424_1.txt", "r", stdin);
+	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_13424_1.txt", "r", stdin);
+	freopen("D:/Git/SWCert/input/BOJ_13424_1.txt", "r", stdin);
 	//freopen("D:/Git/SWCert/input/BOJ_13424.txt", "r", stdin);
 
 	scanf("%d", &T);
-    int a, b, c, num;
-    while(T--) {
-        scanf("%d %d", &N, &M);	//N개의 방, M개의 길
-        if (isPrint) printf("N: %d, M: %d\n", N, M);
-        for(int i=0; i<M; i++) {
-            scanf("%d %d %d", &a, &b, &c);
-            v[a].push_back({ b, c });
-            v[b].push_back({ a, c });            
-        }//for
-    }//while
-    
-    scanf("%d", &K);
-    for(int i=0; i<K; i++) {
-        scanf("%d", &num);
-        friends[i]=num;
-        dijkstra(num);
-    }    
+	int a, b, c, num;
+	while (T--) {
+		scanf("%d %d", &N, &M);	//N개의 방, M개의 길
+		if (isPrint) printf("N: %d, M: %d\n", N, M);
+		for (int i = 0; i < M; i++) {
+			scanf("%d %d %d", &a, &b, &c);
+			v[a].push_back({ b, c });
+			v[b].push_back({ a, c });
+		}//for
+	}//while
 
-    int minVal=answer[0];
-    int maxVal=answer[0];
+	scanf("%d", &K);
+	for (int i = 0; i < K; i++) {
+		scanf("%d", &num);
+		friends[i] = num;
+		//dijkstra(num);
+	}
+
+	dijkstra(3);
+
+	int minVal = answer[0];
+	int maxVal = answer[0];
 	for (int i = 1; i <= N; i++) {
 		printf("%d ", answer[i]);
 	}
 
-    for (int i = 1; i <= N; i++) {
-        minVal=min(minVal, answer[i]);
-        maxVal=max(maxVal, answer[i]);
+	printf("\n");
+	for (int i = 1; i <= N; i++) {
+		minVal = min(minVal, answer[i]);
+		maxVal = max(maxVal, answer[i]);
 	}
 
-    if (isPrint) printf("minVal: %d, maxVal: %d\n", minVal, maxVal);
-    /*
-    for(int i=0; i<K; i++) {
-        dijkstra(friends[i]);
-    }
-    */       
+	if (isPrint) printf("minVal: %d, maxVal: %d\n", minVal, maxVal);
+	/*
+	for(int i=0; i<K; i++) {
+		dijkstra(friends[i]);
+	}
+	*/
 
 }//input
 
