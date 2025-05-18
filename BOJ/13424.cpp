@@ -41,6 +41,8 @@ void dijkstra(int st) {
 		int now = pq.top().first;
 		int nowCost = pq.top().second;
 		pq.pop();
+		if (isPrint) printf("now; %d, nowCost()\n");
+
 
 		for (int i = 0; i < v[now].size(); i++) {
 			int next = v[now][i].first;
@@ -81,7 +83,8 @@ void input() {
 		//dijkstra(num);
 	}
 
-	dijkstra(3);
+	//dijkstra(3);
+	dijkstra(5);
 
 	int minVal = answer[0];
 	int maxVal = answer[0];
