@@ -51,42 +51,52 @@ void dijkstra(int st) {
 
 			if (dist[next] > nextCost) {
 				if (isPrint) printf("IN next: %d, nextCost: %d\n", next, nextCost);
-				dist[next] = nextCost;				
+				dist[next] = nextCost;
 				pq.push({ next, nextCost });
 			}
 		}
-	}
+	}//while
 
+
+	if (isPrint) printf("st: %d, N: %d\n", st, N);
+	for (int i = 1; i <= N; i++) {
+		answer[i] += dist[i];
+		printf("%d ", answer[i]);
+	}
+	printf("\n");
 }
 
 void input() {
 
-	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_13424_1.txt", "r", stdin);
-	freopen("D:/Git/SWCert/input/BOJ_13424_1.txt", "r", stdin);
-	//freopen("D:/Git/SWCert/input/BOJ_13424.txt", "r", stdin);
+	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_13424.txt", "r", stdin);
+	freopen("D:/Git/SWCert/input/BOJ_13424.txt", "r", stdin);
+	//freopen("D:/Git/SWCert/input/BOJ_13424_1.txt", "r", stdin);
+	//freopen("D:/Git/SWCert/input/BOJ_13424_2.txt", "r", stdin);
 
 	scanf("%d", &T);
 	int a, b, c, num;
-	while (T--) {
+	//while (T--) {
+	for(int tc =0; tc <T; tc++) {
 		scanf("%d %d", &N, &M);	//N개의 방, M개의 길
-		if (isPrint) printf("N: %d, M: %d\n", N, M);
+		if (isPrint) printf("tc: %d, N: %d, M: %d\n", tc, N, M);
 		for (int i = 0; i < M; i++) {
 			scanf("%d %d %d", &a, &b, &c);
 			v[a].push_back({ b, c });
 			v[b].push_back({ a, c });
 		}//for
+
+		scanf("%d", &K);
+		for (int i = 0; i < K; i++) {
+			scanf("%d", &num);
+			if (isPrint) printf("num: %d\n", num);
+			dijkstra(num);
+		}
+
 	}//while
 
-	scanf("%d", &K);
-	for (int i = 0; i < K; i++) {
-		scanf("%d", &num);
-		friends[i] = num;
-		//dijkstra(num);
-	}
+	
 
-	//dijkstra(3);
-	dijkstra(5);
-
+	
 	int minVal = answer[0];
 	int maxVal = answer[0];
 	for (int i = 1; i <= N; i++) {
