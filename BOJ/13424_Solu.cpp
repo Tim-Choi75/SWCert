@@ -1,7 +1,7 @@
 //백준(BOJ) 13424 - 서강그라운드
 //https://www.acmicpc.net/problem/13424
 //Algo: Dijkstra
-//Solve: 
+//Solve: https://velog.io/@soosungp33/BOJ-13424%EB%B2%88-%EB%B9%84%EB%B0%80-%EB%AA%A8%EC%9E%84C
 
 #define  _CRT_SECURE_NO_WARNINGS
 
@@ -13,37 +13,17 @@ using namespace std;
 
 #define MAX_N	101
 #define INF		1e9
-#define isPrint	1
+#define isPrint	0
 
 typedef pair<int, int> pii;
-vector<pii> v[MAX_N];
-int dist[MAX_N];
-int friends[MAX_N];
-int answer[MAX_N];
 int T, N, M, K, ans;   //N개의 방, M개의 길, K: 친구수
-
-
-void init_Dist() {
-	if (isPrint) printf("init_Dist()\n");
-	for (int i = 1; i <= N; i++) {
-		dist[i] = INF;
-	}
-}
-
-
-void init_Dist() {
-	if (isPrint) printf("init_Dist()\n");
-	for (int i = 1; i <= N; i++) {
-		dist[i] = INF;
-	}
-}
-
+int dist[MAX_N];
+vector<pii> arr[MAX_N];
 
 void dijkstra(int st) {
-	init_Dist();
+
 	priority_queue <pii, vector<pii>, greater<pii> > pq;
 
-	dist[st] = 0;
 	pq.push({ st, 0 });
 	while (!pq.empty()) {
 		int now = pq.top().first;
@@ -52,9 +32,9 @@ void dijkstra(int st) {
 		if (isPrint) printf("now: %d, nowCost: %d\n", now, nowCost);
 
 
-		for (int i = 0; i < v[now].size(); i++) {
-			int next = v[now][i].first;
-			int nextCost = nowCost + v[now][i].second;
+		for (int i = 0; i < arr[now].size(); i++) {
+			int next = arr[now][i].first;
+			int nextCost = nowCost + arr[now][i].second;
 			if (isPrint) printf("i: %d, next: %d, nextCost: %d\n", i, next, nextCost);
 
 			if (dist[next] > nextCost) {
@@ -68,15 +48,10 @@ void dijkstra(int st) {
 
 	if (isPrint) printf("st: %d, N: %d\n", st, N);
 	for (int i = 1; i <= N; i++) {
-		answer[i] += dist[i];
-		printf("%d ", dist[i]);
+		ans[i] += dist[i];
+		if (isPrint) printf("%d ", dist[i]);
 	}
-	printf("\n");
 	
-	for (int i = 1; i <= N; i++) {
-		printf("%d ", answer[i]);
-	}
-	printf("\n");
 }
 
 void input() {
@@ -89,21 +64,29 @@ void input() {
 	scanf("%d", &T);
 	int a, b, c, num;
 	//while (T--) {
-	for(int tc =0; tc <T; tc++) {
+	for (int tc = 0; tc < T; tc++) {
 		scanf("%d %d", &N, &M);	//N개의 방, M개의 길
-		if (isPrint) printf("tc: %d, N: %d, M: %d\n", tc, N, M);
+		if (isPrint) printf("tc: %d, N: %d, M: %d\n", tc, N, M);		
+		
+		int ans[MAX_N];
+		for (int i = 0; i < MAX_N; i++)
+			ans[i] = 0;
+
 		for (int i = 0; i < M; i++) {
 			scanf("%d %d %d", &a, &b, &c);
-			v[a].push_back({ b, c });
-			v[b].push_back({ a, c });
-		}//for
+			arr[a].push_back({ b, c });
+			arr[b].push_back({ a, c });
+		}
 
 		scanf("%d", &K);
 		for (int i = 0; i < K; i++) {
 			scanf("%d", &num);
 			if (isPrint) printf("num: %d\n", num);
+
+			for (int j = 0; j < MAX_N; j++) 
+				dist[j] = INF;
+			
 			dijkstra(num);
-			init_Answer();
 		}
 
 	}//while
@@ -112,34 +95,22 @@ void input() {
 
 void solve() {
 
-	if (isPrint) printf("solve()\n");
-
-	int minVal = answer[0];
-	int maxVal = answer[0];
+	int result = -1;
+	int num;
 	for (int i = 1; i <= N; i++) {
-		printf("%d ", answer[i]);
+		if (result == -1 || ans[i] < result) {
+			result = ans[i];
+			num = i;
+		}
 	}
 
-	printf("\n");
-	for (int i = 1; i <= N; i++) {
-		minVal = min(minVal, answer[i]);
-		maxVal = max(maxVal, answer[i]);
-	}
-
-	if (isPrint) printf("minVal: %d, maxVal: %d\n", minVal, maxVal);
-	/*
-	for(int i=0; i<K; i++) {
-		dijkstra(friends[i]);
-	}
-	*/
-
+	printf("%d\n", num);
 }
 
 
 int main() {
 
-	input();
-	//dijkstra();
+	input();	
 	solve();
 	return 0;
 }
