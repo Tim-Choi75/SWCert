@@ -13,11 +13,12 @@ using namespace std;
 
 #define MAX_N	101
 #define INF		1e9
-#define isPrint	0
+#define isPrint	1
 
 typedef pair<int, int> pii;
-int T, N, M, K, ans;   //N개의 방, M개의 길, K: 친구수
+int T, N, M, K;   //N개의 방, M개의 길, K: 친구수
 int dist[MAX_N];
+int ans[MAX_N];
 vector<pii> arr[MAX_N];
 
 void dijkstra(int st) {
@@ -68,7 +69,6 @@ void input() {
 		scanf("%d %d", &N, &M);	//N개의 방, M개의 길
 		if (isPrint) printf("tc: %d, N: %d, M: %d\n", tc, N, M);		
 		
-		int ans[MAX_N];
 		for (int i = 0; i < MAX_N; i++)
 			ans[i] = 0;
 
