@@ -6,6 +6,11 @@
         "algorithm": "cpp",
         "vector": "cpp",
         "queue": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "__split_buffer": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "list": "cpp",
+        "regex": "cpp"
     }
 }

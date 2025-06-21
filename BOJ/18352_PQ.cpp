@@ -32,9 +32,31 @@ int main() {
 
     priority_queue<pii> pq;
     pq.push({X, 0})
-    for(int i=0; i<N; i++) {
-        
+    for(int i=1; i<=N; i++) {
+        dist[i]=INF;
     }
+
+    dist[X]=0;
+
+    while(!pq.empty()) {
+        int now = pq.top().first;
+        int nowCost = pq.top().second;
+        pq.pop();
+
+        if(dist[now] < nowCost) //이 코드의 의미
+            continue;
+    
+        if()
+    
+    
+    
+    
+    
+    
+    
+    
+    }//while
+    
 
 
 
