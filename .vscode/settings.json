@@ -13,6 +13,11 @@
         "list": "cpp",
         "regex": "cpp",
         "iostream": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "istream": "c",
+        "memory": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "xlocnum": "c"
     }
 }
