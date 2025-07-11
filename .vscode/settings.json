@@ -18,6 +18,8 @@
         "memory": "c",
         "tuple": "c",
         "type_traits": "c",
-        "xlocnum": "c"
+        "xlocnum": "c",
+        "valarray": "c",
+        "random": "c"
     }
 }
