@@ -12,9 +12,13 @@ int main() {
     //add key pair value
     umap{"apple"} = 5;
     umap{"banana"} =3;
-    
+    umap{"cherry"} =8;
 
+    //search with key
+    cout << "Number of aoples: " << umap["apple"] << endl;
 
+    //check if key exists
+    if(umap.find("banana"))
 
 
 
