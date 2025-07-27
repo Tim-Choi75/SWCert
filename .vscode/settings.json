@@ -20,6 +20,7 @@
         "type_traits": "c",
         "xlocnum": "c",
         "valarray": "c",
-        "random": "c"
+        "random": "c",
+        "unordered_map": "cpp"
     }
 }
