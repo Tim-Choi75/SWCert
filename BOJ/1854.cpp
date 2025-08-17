@@ -29,9 +29,9 @@ void dijkstra(int st) {
 
 		int now = pq.top().first;
 		int nowCost = pq.top().second;
-	
+
 		pq.pop();
-	
+
 		for (i = 0; i < v[now].size(); i++) {
 			int next = v[now][i].first;
 			int nextCost = v[now][i].second;
@@ -57,7 +57,7 @@ int main() {
 
 	//a: 시작, b: 도착, c:시간
 	int a, b, c;
-	for (i = 1; i <=m; i++) {
+	for (i = 1; i <= m; i++) {
 		scanf("%d %d %d", &a, &b, &c);
 		v[a].push_back({ b, c });
 	}
@@ -67,6 +67,7 @@ int main() {
 		dist[i] = INF;
 	}
 
+	//1에서 i로 가는 k번째 최단 경로 소요시간 출력
 	dijkstra(1);
 
 	for (i = 1; i <= n; i++) {

@@ -60,7 +60,7 @@ int main() {
 	for (int i = 0; i < M; i++) {
 		scanf("%d %d %d", &A, &B, &C);
 		node[A].push_back({ B, C });
-		node[B].push_back({ A, C });
+		node[B].push_back({ A, C });	//양방향
 	}
 
 	int U, V;	//U->V 공장으로 이동
