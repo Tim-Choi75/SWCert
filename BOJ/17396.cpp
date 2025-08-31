@@ -77,7 +77,7 @@ int main() {
 	//(1 ≤ N ≤ 100,000, 1 ≤ M ≤ 300,000)
 	scanf("%d %d", &N, &M);
 
-	for (int i = 0; i < N; i++)	
+	for (int i = 1; i <=N; i++)	
 		scanf("%d", &view[i]);	//1이면 상대방에 보임, 0이면 안보임
 
 	int a, b, t;	//a->b로 갈때 t시간
