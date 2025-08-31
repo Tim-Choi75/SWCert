@@ -19,7 +19,7 @@ using namespace std;
 int N, M;	//N: 분기점, M: 길의수 (1 ≤ N ≤ 100,000, 1 ≤ M ≤ 300,000)
 int view[MAX_N];
 vector<lpi> connect[MAX_N];
-ll dist[MAX_N];
+LL dist[MAX_N];
 priority_queue<lpi> pq;
 
 void reset_distance() {
@@ -33,7 +33,7 @@ void dijkstra() {
 	pq.push({0, 1});
 
 	while(!pq.empty()) {
-		ll cost = -pq.top().first;
+		LL cost = -pq.top().first;
 		int x = pq.top().second;
 
 		pq.pop();
@@ -42,10 +42,10 @@ void dijkstra() {
 
 		for(int i=0; i<connect[x].size(); i++) {
 			int xx = connect[x][i].first;
-			int n_nost = connect[x][i].second;
+			int n_cost = connect[x][i].second;
 
-			if(dist[xx] > dist[x] + n_nost) {
-				dist[xx] = dist[x] + n_nost)
+			if(dist[xx] > dist[x] + n_cost) {
+				dist[xx] = dist[x] + n_cost;
 				pq.push({-dist[xx], xx});
 			}
 
@@ -63,7 +63,7 @@ void solve() {
 	if(dist[N] == INF)
 		printf("-1\n");
 	else
-		printf("%d\n", dist[N]);
+		printf("%lld\n", dist[N]);
 
 }
 
@@ -78,7 +78,7 @@ int main() {
 	scanf("%d %d", &N, &M);
 
 	for (int i = 0; i < N; i++)	
-		scanf("%d %d", &view[i]);	//1이면 상대방에 보임, 0이면 안보임
+		scanf("%d", &view[i]);	//1이면 상대방에 보임, 0이면 안보임
 
 	int a, b, t;	//a->b로 갈때 t시간
 	for (int i = 0; i < M; i++) {
