@@ -48,6 +48,7 @@ void Dijstra(){
             
             if(Distance[xx] > Distance[x] + n_cost){
                 Distance[xx] = Distance[x] + n_cost;
+                if (isPrint) printf("x: %d->xx: %d, Distance[xx]: %lld\n", x, xx, Distance[xx]);
                 q.push({-Distance[xx], xx});
             }
         }
@@ -76,6 +77,8 @@ int main() {
     for(int i = 1; i <= M; i++){
         int x, y, cost;
         cin >> x >> y >> cost;
+        printf("x: %d, y: %d, cost: %d\n", x, y, cost);
+
         if(View[x+1] == 1 || View[y+1] == 1) continue;
         connect[x+1].push_back({y+1, cost});
         connect[y+1].push_back({x+1, cost});
