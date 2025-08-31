@@ -14,13 +14,16 @@ using namespace std;
 #define MAX_N	100001
 #define LL long long int
 #define lpi pair<LL, int>
-#define INF 1e9
+#define INF 1e18
 
 int N, M;	//N: 분기점, M: 길의수 (1 ≤ N ≤ 100,000, 1 ≤ M ≤ 300,000)
 int view[MAX_N];
 vector<lpi> connect[MAX_N];
 LL dist[MAX_N];
 priority_queue<lpi> pq;
+
+//ChatGPT chatgpt.com/c/68b37e7e-8f08-8324-bb54-38f091fe30f8
+
 
 void reset_distance() {
 
@@ -30,7 +33,7 @@ void reset_distance() {
 
 void dijkstra() {
 	dist[1]=0;
-	pq.push({0, 1});
+	pq.push({-0, 1});
 
 	while(!pq.empty()) {
 		LL cost = -pq.top().first;
@@ -70,8 +73,8 @@ void solve() {
 
 int main() {
 
-	freopen("/Users/timchoi/Git/SWCert/input/BOJ_17396.txt", "r", stdin);
-	//freopen("D:/Git/SWCert/input/BOJ_17396.txt", "r", stdin);
+	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_17396.txt", "r", stdin);
+	freopen("D:/Git/SWCert/input/BOJ_17396.txt", "r", stdin);
 	//freopen("D:/Git/SWCert/input/BOJ_17396_1.txt", "r", stdin);
 
 	//(1 ≤ N ≤ 100,000, 1 ≤ M ≤ 300,000)
@@ -85,7 +88,7 @@ int main() {
 		scanf("%d %d %d", &a, &b, &t);
 		
 		//1이면 보이므로 q
-		if (view[a + 1] == 1 || view[b + 1] == 1)
+		if ((a != N && view[a + 1] == 1) || (b != N && view[b + 1] == 1))
 			continue;
 		
 		connect[a + 1].push_back({ b + 1, t });
