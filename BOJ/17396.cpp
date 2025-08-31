@@ -1,7 +1,7 @@
 //백준(BOJ) 17396 - 백도어
 //https://www.acmicpc.net/problem/17396
 //Algo: Dijkstra
-//Solve: 
+//Solve: https://junseok.tistory.com/286
 
 #define  _CRT_SECURE_NO_WARNINGS
 
@@ -12,35 +12,69 @@
 using namespace std;
 
 #define MAX_N	100001
-#define ll long long
-#define lpi pair<ll, int>
+#define LL long long int
+#define lpi pair<LL, int>
+#define INF 1e9
 
 int N, M;	//N: 분기점, M: 길의수 (1 ≤ N ≤ 100,000, 1 ≤ M ≤ 300,000)
 int view[MAX_N];
 vector<lpi> connect[MAX_N];
-int dist[MAX_N];
+ll dist[MAX_N];
 priority_queue<lpi> pq;
+
+void reset_distance() {
+
+	for(int i=1; i<=N; i++)
+		dist[i]=INF;
+}
+
+void dijkstra() {
+	dist[1]=0;
+	pq.push({0, 1});
+
+	while(!pq.empty()) {
+		ll cost = -pq.top().first;
+		int x = pq.top().second;
+
+		pq.pop();
+		if(dist[x] < cost)
+			continue;
+
+		for(int i=0; i<connect[x].size(); i++) {
+			int xx = connect[x][i].first;
+			int n_nost = connect[x][i].second;
+
+			if(dist[xx] > dist[x] + n_nost) {
+				dist[xx] = dist[x] + n_nost)
+				pq.push({-dist[xx], xx});
+			}
+
+		}
+
+	}//while
+
+}
 
 void solve() {
 
-	dist[1] = 0;
-
-
-
-
-
-
-
+	reset_distance();
+	dijkstra();
+	
+	if(dist[N] == INF)
+		printf("-1\n");
+	else
+		printf("%d\n", dist[N]);
 
 }
 
 
 int main() {
 
-	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_1854.txt", "r", stdin);
-	freopen("D:/Git/SWCert/input/BOJ_17396.txt", "r", stdin);
+	freopen("/Users/timchoi/Git/SWCert/input/BOJ_17396.txt", "r", stdin);
+	//freopen("D:/Git/SWCert/input/BOJ_17396.txt", "r", stdin);
 	//freopen("D:/Git/SWCert/input/BOJ_17396_1.txt", "r", stdin);
 
+	//(1 ≤ N ≤ 100,000, 1 ≤ M ≤ 300,000)
 	scanf("%d %d", &N, &M);
 
 	for (int i = 0; i < N; i++)	
@@ -49,8 +83,9 @@ int main() {
 	int a, b, t;	//a->b로 갈때 t시간
 	for (int i = 0; i < M; i++) {
 		scanf("%d %d %d", &a, &b, &t);
-
-		if (view[a + 1] == 1 || view[y + 1] == 1)
+		
+		//1이면 보이므로 q
+		if (view[a + 1] == 1 || view[b + 1] == 1)
 			continue;
 		
 		connect[a + 1].push_back({ b + 1, t });
