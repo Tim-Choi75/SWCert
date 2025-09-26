@@ -1,7 +1,7 @@
 //백준(BOJ) 1238 - 파티
 //https://www.acmicpc.net/problem/1238
 //Algo: 다익스트라
-//Solve: 
+//Solve: chatgpt.com/c/68d62743-3fe0-8320-b12e-39eab1b7d322
 
 #define  _CRT_SECURE_NO_WARNINGS
 
@@ -24,28 +24,31 @@ int N, M, X;	//마을, 도로, 파티장소
 void dijkstra(int num) {
 
 
-	for (int i = 1; i <= N; i++)
-		for (int j = 1; j <= N; j++)
-			dist[i][j] = INF;
+	for (int i = 1; i <= N; i++)		
+		dist[num][i] = INF;
 
 	//거리에 대해 내림차순 정렬(거리가 짧은것부터 뽑힘)
 	priority_queue<pii, vector<pii>, greater<pii>> pq;
-	dist[0][0] = 0;	//마을 0에서 0으로 이동하는 비용
-	pq.push({ num, 0 });
+	dist[num][num] = 0;	//마을 0에서 0으로 이동하는 비용
+	pq.push({ 0, num });
 
 	while (!pq.empty()) {
-		int x = pq.top().first;
-		int cost = pq.top().second;
+		int cost = pq.top().first;
+		int x = pq.top().second;
 		pq.pop();
+
+		if (cost > dist[num][x])	//이미 더 짧은경로가 있으면 스킵
+			continue;
 
 		for (int i = 0; i < v[x].size(); i++) {
 
-			int nx = v[x][i].first;	//연결된 마을
-			int ncost = cost + v[x][i].second;
-			
+			int nx = v[x][i].first;       // 연결된 마을
+			int ncost = cost + v[x][i].second; // 누적 비용
+
+
 			if (dist[num][nx] > ncost) {
 				dist[num][nx] = ncost;
-				pq.push({ nx, ncost });
+				pq.push({ ncost, nx });
 			}
 		}
 
@@ -57,7 +60,7 @@ int main() {
 	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_1238.txt", "r", stdin);
 	freopen("D:/Git/SWCert/input/BOJ_1238.txt", "r", stdin);
 
-	scanf("%d %d", &N, &M);
+	scanf("%d %d", &N, &M, &X);
 
 	for (int i = 0; i < M; i++) {
 		int a, b, c;
@@ -66,7 +69,7 @@ int main() {
 	}
 
 	//모든 정점에 대해서 다익스트라 수행
-	for(int i=1; i<=N; i++)
+	for (int i = 1; i <= N; i++)
 		dijkstra(i);
 
 	int ans = 0;
