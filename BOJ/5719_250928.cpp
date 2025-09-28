@@ -2,7 +2,7 @@
 //https://www.acmicpc.net/problem/5719
 //Algo: Dijkstra
 //Solve: 
-
+//			https://www.youtube.com/watch?v=KnN0tjqaNZw
 
 #define _CRT_SECURE_NO_WARNINGS
 
