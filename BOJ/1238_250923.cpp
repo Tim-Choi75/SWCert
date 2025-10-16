@@ -1,11 +1,13 @@
 //백준(BOJ) 1238 - 파티
 //https://www.acmicpc.net/problem/1238
 //Algo: 다익스트라
-//Solve: chatgpt.com/c/68d62743-3fe0-8320-b12e-39eab1b7d322
+//Solve: https://howudong.tistory.com/284
+//       https://chatgpt.com/c/68d62743-3fe0-8320-b12e-39eab1b7d322
 
 #define  _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
+#include <iostream>
 #include <queue>
 #include <vector>
 
@@ -13,7 +15,7 @@ using namespace std;
 
 //마을 N개(1 ≤ N ≤ 1, 000), 도로 M개(1 ≤ M ≤ 10, 000)
 
-#define MAX_N 1000
+#define MAX_N 1001
 #define INF 1e9
 #define pii pair<int, int>
 vector<pii> v[MAX_N];
@@ -60,7 +62,7 @@ int main() {
 	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_1238.txt", "r", stdin);
 	freopen("D:/Git/SWCert/input/BOJ_1238.txt", "r", stdin);
 
-	scanf("%d %d", &N, &M, &X);
+	scanf("%d %d %d", &N, &M, &X);
 
 	for (int i = 0; i < M; i++) {
 		int a, b, c;
@@ -73,8 +75,12 @@ int main() {
 		dijkstra(i);
 
 	int ans = 0;
-	for (int i = 1; i <= N; i++)
+	for (int i = 1; i <= N; i++) {
+		if (dist[i][X] == INF || dist[X][i] == INF)
+			continue;
 		ans = max(ans, dist[i][X] + dist[X][i]);
+	}
+		
 
 	printf("%d\n", ans);
 	return 0;

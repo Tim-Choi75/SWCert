@@ -1,8 +1,8 @@
 //백준(BOJ) 5719 - 거의 최단 경로
 //https://www.acmicpc.net/problem/5719
 //Algo: Dijkstra
-//Solve: 
-//			https://www.youtube.com/watch?v=KnN0tjqaNZw
+//Solve: https://www.youtube.com/watch?v=KnN0tjqaNZw&t
+
 
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -24,10 +24,14 @@ int U, V, P;	//
 
 
 vector<pii> v[MAX_N];
+int visit[MAX_N];
+priority_queue<pii> pq;
+vector<pii> edge[MAX_N];	//인접 리스트
+vector<int> suc[MAX_N];		//index정점을 오기전 전 정점을 저장하는 vector, 다익스트라 tracking
 
 void dijktra(int st) {
 
-	priority_queue<pii, vector<pii>, greater<pii>> pq;
+	
 
 
 
@@ -42,8 +46,35 @@ int main() {
 
 
 	freopen("D:/Git/SWCert/input/BOJ_5719.txt", "r", stdin);
-	scanf("%d %d", &N, &M);
-	scanf("%d %d", &S, &D);
+	
+	while (1) {
+		scanf("%d %d", &N, &M);	//N 장소, M 도로
+		
+		if (N + M == 0)	
+			break;
+
+		scanf("%d %d", &S, &D);	//S 시작, D 도착
+		S++; D++;	//1-base
+
+		for (int i = 1; i <= M; i++) {
+			scanf("%d %d %d", &U, &V, &P);	//U에서 V로 가는데 길이 P
+			U++; V++; P++;	//1-base
+			v[U].push_back({ V, P });
+		}
+
+		for(int )
+	
+	
+	
+	
+	
+	}//while
+	
+	
+	
+
+
+
 
 	for (int i = 0; i < M; i++) {
 		scanf("%d %d %d", &U, &V, &P);
