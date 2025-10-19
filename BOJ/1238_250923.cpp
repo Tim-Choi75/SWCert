@@ -59,8 +59,8 @@ void dijkstra(int num) {
 
 int main() {
 
-	//freopen("/Users/timchoi/Git/SWCert/input/BOJ_1238.txt", "r", stdin);
-	freopen("D:/Git/SWCert/input/BOJ_1238.txt", "r", stdin);
+	freopen("/Users/timchoi/Git/SWCert/input/BOJ_1238.txt", "r", stdin);
+	//freopen("D:/Git/SWCert/input/BOJ_1238.txt", "r", stdin);
 
 	scanf("%d %d %d", &N, &M, &X);
 
