@@ -48,8 +48,10 @@ int main() {
         break;
 
         scanf("%d %d", &S, &D);	//S: ½ÃÀÛ, D: µµÂø
-
-        for (int i = 0; i < N; i++) {
+        int U, V, W;
+        for (int i = 0; i < M; i++) {
+            scanf("%d %d %d", &U, &V, &W);
+        } 
 
 
     }
