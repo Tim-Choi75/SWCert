@@ -12,6 +12,7 @@
 #include <vector>
 
 #define MAX_N	501
+#define INF		1e9
 #define pii pair<int, int>
 
 using namespace std;
@@ -62,13 +63,42 @@ int main() {
 			v[U].push_back({ V, P });
 		}
 
-		for(int )
+		for(int i=1; i<=N; i++)
+			visit[i]=INF;
+		
+		visit[S] = 0;
+		pq.push({ -visit[S], S });
+		
+		while (!pq.empty()) {
+
+			int cost = -pq.top().first;
+			int now = pq.top().second;
+			pq.pop();
+
+			for (auto it : edge[now]) {
+			//for(i=0; i<edge[now].size(); i++)
+				if (visit[it.second] > cost + it.first) {
+					//visit[it.second] 현재 저장되어있는, 다음정점까지의 가중치
+					//cost + it.first 현재정점까지의 가중치 + 간선의 가중치
+					visit[it.second] = cost + it.first;
+					suc[it.second].clear();
+					suc[it.second].push_back(now);					
+				}
+				else {
+					suc[it.second].push_back(now);
+				}
+				pq.push({ -visit[it.second], it.second });
+			}//for
+			   			 
+		}//while-pq
 	
+		del.push(ed);
+		while (!de.empty()) {
+			int now = del.front();
+			del.pop()
+		}
 	
-	
-	
-	
-	}//while
+	}//while(1)
 	
 	
 	
