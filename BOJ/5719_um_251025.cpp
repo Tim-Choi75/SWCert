@@ -50,7 +50,7 @@ int main() {
         scanf("%d %d", &S, &D);	//S: 시작, D: 도착
         int U, V, W;
         for (int i = 0; i < M; i++) {
-            scanf("%d %d %d", &U, &V, &W);
+            scanf("%d %d %d", &U, &V, &W);  //U->V에서 W
         } 
 
 

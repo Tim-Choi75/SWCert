@@ -10,6 +10,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <string.h>
 
 using namespace std;
 
@@ -41,19 +42,6 @@ int main() {
 	freopen("/Users/timchoi/Git/SWCert/input/BOJ_1260_1.txt", "r", stdin);
 	//freopen("D:/Git/SWCert/input/BOJ_5719.txt", "r", stdin);
 
-    //장소의 수 N (2 ≤ N ≤ 500), 도로의 수 M (1 ≤ M ≤ 10000)
-    while(true) {
-        scanf("%d %d", &N, &M);
-        if(N+M ==0)
-        break;
 
-        scanf("%d %d", &S, &D);	//S: 시작, D: 도착
-        int U, V, W;
-        for (int i = 0; i < M; i++) {
-            scanf("%d %d %d", &U, &V, &W);  //U->V에서 W
-        } 
-
-
-    }
 	return 0;
 }
