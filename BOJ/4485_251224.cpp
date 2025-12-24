@@ -13,7 +13,15 @@
 #include <queue>
 using namespace std;
 
-int
+int N;
+
+void init() {
+
+    for(int i=0; i<MAX; i++)
+
+
+
+}
 
 void dijkstra() {
 
@@ -24,6 +32,16 @@ int main()
 {
 	freopen("/Users/timchoi/Git/SWCert/input/BOJ_4485.txt", "r", stdin);
 	//freopen("D:/Git/SWCert/input/BOJ_4485.txt", "r", stdin);
+    int TC;
+    while(true) {
+        scanf("%d", &N);
+        for(int i=0; i<N; i++) {
+
+        }
+    }
+    scanf("%d", &N);
+
+    
 
 	return 0;
 }
